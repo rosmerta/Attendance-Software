@@ -20,3 +20,6 @@ D:\Rozmerta  Project\Attendance Master\Attendance Master\DAL.pdb
 D:\Rozmerta  Project\Attendance Master\Attendance Master\Microsoft.Expression.Encoder.Utilities.xml
 D:\Rozmerta  Project\Attendance Master\Attendance Master\Microsoft.Expression.Encoder.Types.xml
 D:\Rozmerta  Project\Attendance Master\Attendance Master\INI.pdb
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\Attendance Master.exe.config
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance Master.exe
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance Master.pdb
