@@ -12,6 +12,7 @@ using System.IO;
 using DPUruNet;
 using System.Threading;
 using System.Drawing.Imaging;
+using System.Globalization;
 namespace Attendance_Master
 {
     public partial class PunchMaster : Form
@@ -19,6 +20,8 @@ namespace Attendance_Master
         public PunchMaster()
         {
             InitializeComponent();
+            timer1.Enabled = true;
+            timer1.Interval = 1000;
         }
 
         #region Global Veriable
@@ -71,10 +74,10 @@ namespace Attendance_Master
         private void GetReaderList()
         {
 
-         
+
 
             _readers = ReaderCollection.GetReaders();
-              currentReader = null;
+            currentReader = null;
             foreach (Reader reader in _readers)
             {
                 currentReader = reader;
@@ -109,16 +112,16 @@ namespace Attendance_Master
             {
                 //if( currentReader.Status.Status==
 
-              
-                  
-                    if (OpenReader())
-                    {
 
-                        StartCaptureAsync(this.OnCaptured);
 
-                    }
+                if (OpenReader())
+                {
 
-                
+                    StartCaptureAsync(this.OnCaptured);
+
+                }
+
+
 
 
             }
@@ -133,15 +136,15 @@ namespace Attendance_Master
             reset = false;
             Constants.ResultCode result = Constants.ResultCode.DP_DEVICE_FAILURE;
 
-            if(currentReader.Status!=null)
-            currentReader.Dispose();
-            
+            if (currentReader.Status != null)
+                currentReader.Dispose();
+
 
             // Open reader
 
             result = currentReader.Open(Constants.CapturePriority.DP_PRIORITY_COOPERATIVE);
 
-            
+
             if (result != Constants.ResultCode.DP_SUCCESS)
             {
 
@@ -352,35 +355,50 @@ namespace Attendance_Master
 
                                             if (compareResult.Score == Common.IsValidateFinger && compareResult.ResultCode == Constants.ResultCode.DP_SUCCESS)
                                             {
-                                               
-                                                pictureBox1.Image = (Bitmap)((new ImageConverter()).ConvertFrom(Bytes));
-                                                lblEmployeeId.Text = CompleteDataForValidateRecords.Rows[i]["EmployeeID"].ToString();
-                                                lblEmployeeName.Text = CompleteDataForValidateRecords.Rows[i]["Name"].ToString();
-                                                lblEmployeeId.Visible = true;
-                                                lblEmployeeName.Visible = true;
-                                                lblStatus.Text = string.Empty;
-                                                int a = ObjRegister.IN_AttendanceLog(CompleteDataForValidateRecords.Rows[i]["EmployeeID"].ToString());
-                                                i = CompleteDataForValidateRecords.Rows.Count;
+                                                if (ObjRegister.IN_AttendanceLog(CompleteDataForValidateRecords.Rows[i]["EmployeeID"].ToString()) <= Common.Zero)
+                                                {
+                                                    lblStatus.Text = "No Allowed ";
+                                                }
+                                                else
+                                                {
+                                                    pictureBox1.Image = (Bitmap)((new ImageConverter()).ConvertFrom(Bytes));
+                                                    lblEmployeeId.Text = CompleteDataForValidateRecords.Rows[i]["EmployeeID"].ToString().Trim();
+                                                    lblEmployeeName.Text = CompleteDataForValidateRecords.Rows[i]["Name"].ToString().Trim();
+                                                    lblEmployeeId.Visible = true;
+                                                    lblEmployeeName.Visible = true;
+                                                    lblStatus.Text = string.Empty;
+
+                                                    lblStatus.Text = ReturnWelcomeMessage() + lblEmployeeName.Text;
+                                                    lblStatus.ForeColor = Color.Green;
+
+                                                    i = CompleteDataForValidateRecords.Rows.Count;
+                                                }
 
                                                 break;
                                             }
+                                            else
+                                            {
+                                                if (pictureBox1.Image == null)
+                                                {
+                                                    pictureBox1.Image = null;
+                                                    lblEmployeeId.Text = string.Empty;
+                                                    lblEmployeeName.Text = string.Empty;
+                                                    lblStatus.Text = "Please Try again";
+                                                    lblEmployeeId.Visible = false;
+
+                                                    lblEmployeeName.Visible = false;
+
+                                                }
+                                            }
                                         }
-                                      
+
 
                                     }
                                 }
+                                else
+                                    Common.MessageBoxInformation("No Records Found plz Contact to admin");
 
-                                if (pictureBox1.Image == null)
-                                {
-                                    pictureBox1.Image = null;
-                                    lblEmployeeId.Text = string.Empty;
-                                    lblEmployeeName.Text = string.Empty;
-                                    lblStatus.Text = "Please Try again";
-                                    lblEmployeeId.Visible = false;
 
-                                    lblEmployeeName.Visible = false;
-
-                                }
                             }
 
 
@@ -396,9 +414,34 @@ namespace Attendance_Master
             }
         }
 
+        public string ReturnWelcomeMessage()
+        
+        {
+            int TempValue=0;
+            string ReturnValue = string.Empty;
+          string AM_PM=  DateTime.Now.ToString("tt", CultureInfo.InvariantCulture);
+            TempValue =Convert.ToInt32( DateTime.Now.ToString("HH"));
+            ReturnValue = "Welcome ";            
+            if (TempValue > 12)
+                TempValue = TempValue - 12;
+           if((TempValue>=6 && TempValue<=12) &&  AM_PM=="AM")
+              ReturnValue = "Good Morning ";
+           if ((TempValue >= 1 && TempValue <= 4) && AM_PM == "PM")
+               ReturnValue = "Good Afternoon ";
+           if ((TempValue >= 4 && TempValue <= 9) && AM_PM == "PM")
+               ReturnValue = "Good Evening ";             
+           return ReturnValue;
+
+        }
+
 
 
         #endregion
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            digitalDisplayControl1.DigitText = DateTime.Now.ToString("HH:mm:ss");
+        }
 
     }
 }

@@ -251,7 +251,7 @@ namespace Attendance_Master
                 // Create a new device source. We use the first audio and video devices on the system
                 _deviceSource = _job.AddDeviceSource(video, audio);
 
-                _deviceSource.PickBestVideoFormat(new Size(232, 175), 15);
+                _deviceSource.PickBestVideoFormat(new Size(300, 200), 20);
                 // }
 
                 // Get the properties of the device video
@@ -672,7 +672,7 @@ namespace Attendance_Master
                 if (_strFirstFinger != null && _strSecondFinger != null && _strThridFinger != null && img != null)
                 {
                     Register ObjRegister = new Register();
-                    int IsSuccessInsertData = ObjRegister.InsertDataForRegisterUser(txtEmployeeId.Text, txtName.Text, txtAddress.Text, "1", 1, imageToByteArray(img), _strFirstFinger, _strSecondFinger, _strThridFinger);
+                    int IsSuccessInsertData = ObjRegister.InsertDataForRegisterUser(txtEmployeeId.Text.Trim(), txtName.Text.Trim(), txtAddress.Text.Trim(), "1", 1, imageToByteArray(img), _strFirstFinger, _strSecondFinger, _strThridFinger);
                     if (IsSuccessInsertData > Common.DataInsertSuccessfully)
                     {
                         BtnReSet_Click(sender, e);

@@ -28,7 +28,7 @@ namespace Attendance_Master
         {
             PunchMaster ObjPunchMaster = new PunchMaster();
             ObjPunchMaster.Show();
-            ObjPunchMaster.MdiParent = this;
+           
         }
     }
 }

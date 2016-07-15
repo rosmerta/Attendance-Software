@@ -98,7 +98,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(475, 519);
+            this.groupBox1.Size = new System.Drawing.Size(475, 584);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Personal Information";
@@ -203,7 +203,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.groupBox2.Location = new System.Drawing.Point(493, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(604, 530);
+            this.groupBox2.Size = new System.Drawing.Size(687, 584);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Image";
@@ -212,7 +212,7 @@
             // 
             this.label6.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(408, 502);
+            this.label6.Location = new System.Drawing.Point(408, 547);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(190, 25);
             this.label6.TabIndex = 11;
@@ -223,7 +223,7 @@
             // 
             this.label5.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(209, 501);
+            this.label5.Location = new System.Drawing.Point(209, 546);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(193, 26);
             this.label5.TabIndex = 10;
@@ -234,7 +234,7 @@
             // 
             this.label4.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 501);
+            this.label4.Location = new System.Drawing.Point(6, 546);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(190, 26);
             this.label4.TabIndex = 9;
@@ -246,7 +246,7 @@
             this.btnPreview.BackColor = System.Drawing.Color.DarkGray;
             this.btnPreview.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPreview.ForeColor = System.Drawing.Color.DarkCyan;
-            this.btnPreview.Location = new System.Drawing.Point(63, 95);
+            this.btnPreview.Location = new System.Drawing.Point(63, 123);
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(246, 39);
             this.btnPreview.TabIndex = 6;
@@ -268,15 +268,15 @@
             // 
             this.panelVideoPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelVideoPreview.Location = new System.Drawing.Point(354, 58);
-            this.panelVideoPreview.MaximumSize = new System.Drawing.Size(226, 201);
+            this.panelVideoPreview.MaximumSize = new System.Drawing.Size(327, 252);
             this.panelVideoPreview.Name = "panelVideoPreview";
-            this.panelVideoPreview.Size = new System.Drawing.Size(226, 201);
+            this.panelVideoPreview.Size = new System.Drawing.Size(327, 252);
             this.panelVideoPreview.TabIndex = 8;
             // 
             // ThridFinger
             // 
             this.ThridFinger.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ThridFinger.Location = new System.Drawing.Point(408, 310);
+            this.ThridFinger.Location = new System.Drawing.Point(408, 355);
             this.ThridFinger.Name = "ThridFinger";
             this.ThridFinger.Size = new System.Drawing.Size(190, 188);
             this.ThridFinger.TabIndex = 7;
@@ -285,7 +285,7 @@
             // SecondFinger
             // 
             this.SecondFinger.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SecondFinger.Location = new System.Drawing.Point(212, 310);
+            this.SecondFinger.Location = new System.Drawing.Point(212, 355);
             this.SecondFinger.Name = "SecondFinger";
             this.SecondFinger.Size = new System.Drawing.Size(190, 188);
             this.SecondFinger.TabIndex = 6;
@@ -294,7 +294,7 @@
             // FirstFinger
             // 
             this.FirstFinger.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FirstFinger.Location = new System.Drawing.Point(6, 310);
+            this.FirstFinger.Location = new System.Drawing.Point(6, 355);
             this.FirstFinger.Name = "FirstFinger";
             this.FirstFinger.Size = new System.Drawing.Size(190, 188);
             this.FirstFinger.TabIndex = 5;
@@ -305,7 +305,7 @@
             this.btnCapture.BackColor = System.Drawing.Color.DarkGray;
             this.btnCapture.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCapture.ForeColor = System.Drawing.Color.DarkCyan;
-            this.btnCapture.Location = new System.Drawing.Point(63, 161);
+            this.btnCapture.Location = new System.Drawing.Point(63, 213);
             this.btnCapture.Name = "btnCapture";
             this.btnCapture.Size = new System.Drawing.Size(246, 39);
             this.btnCapture.TabIndex = 7;
@@ -329,7 +329,7 @@
             // 
             this.groupBox3.Controls.Add(this.BtnReSet);
             this.groupBox3.Controls.Add(this.BtnSave);
-            this.groupBox3.Location = new System.Drawing.Point(12, 541);
+            this.groupBox3.Location = new System.Drawing.Point(12, 602);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1085, 100);
             this.groupBox3.TabIndex = 5;
@@ -352,10 +352,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1122, 653);
+            this.ClientSize = new System.Drawing.Size(1202, 714);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.HelpButton = true;
             this.Name = "FormRegisterUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Register User";
