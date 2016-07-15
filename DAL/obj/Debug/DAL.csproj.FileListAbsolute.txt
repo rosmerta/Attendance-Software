@@ -1,0 +1,91 @@
+D:\RC\DAL\bin\Debug\DAL.dll
+D:\RC\DAL\bin\Debug\DAL.pdb
+D:\RC\DAL\bin\Debug\INI.dll
+D:\RC\DAL\bin\Debug\INI.pdb
+D:\RC\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\RC\DAL\obj\Debug\DAL.dll
+D:\RC\DAL\obj\Debug\DAL.pdb
+D:\Piyush\Jogi\RC\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Piyush\Jogi\RC\DAL\bin\Debug\DAL.dll
+D:\Piyush\Jogi\RC\DAL\bin\Debug\DAL.pdb
+D:\Piyush\Jogi\RC\DAL\bin\Debug\INI.dll
+D:\Piyush\Jogi\RC\DAL\bin\Debug\INI.pdb
+D:\Piyush\Jogi\RC\DAL\obj\Debug\DAL.dll
+D:\Piyush\Jogi\RC\DAL\obj\Debug\DAL.pdb
+D:\Rozmerta  Project\RC\DAL\bin\Debug\DAL.dll
+D:\Rozmerta  Project\RC\DAL\bin\Debug\DAL.pdb
+D:\Rozmerta  Project\RC\DAL\bin\Debug\INI.dll
+D:\Rozmerta  Project\RC\DAL\bin\Debug\INI.pdb
+D:\Rozmerta  Project\RC\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Rozmerta  Project\RC\DAL\obj\Debug\DAL.dll
+D:\Rozmerta  Project\RC\DAL\obj\Debug\DAL.pdb
+D:\Piyush\NewProject\RC\DAL\bin\Debug\DAL.dll
+D:\Piyush\NewProject\RC\DAL\bin\Debug\DAL.pdb
+D:\Piyush\NewProject\RC\DAL\bin\Debug\INI.dll
+D:\Piyush\NewProject\RC\DAL\bin\Debug\INI.pdb
+D:\Piyush\NewProject\RC\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Piyush\NewProject\RC\DAL\obj\Debug\DAL.dll
+D:\Piyush\NewProject\RC\DAL\obj\Debug\DAL.pdb
+D:\Piyush\NewProject\DLRC_DamanDiu\RC\DAL\bin\Debug\DAL.dll
+D:\Piyush\NewProject\DLRC_DamanDiu\RC\DAL\bin\Debug\DAL.pdb
+D:\Piyush\NewProject\DLRC_DamanDiu\RC\DAL\bin\Debug\INI.dll
+D:\Piyush\NewProject\DLRC_DamanDiu\RC\DAL\bin\Debug\INI.pdb
+D:\Piyush\NewProject\DLRC_DamanDiu\RC\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Piyush\NewProject\DLRC_DamanDiu\RC\DAL\obj\Debug\DAL.dll
+D:\Piyush\NewProject\DLRC_DamanDiu\RC\DAL\obj\Debug\DAL.pdb
+C:\Users\JoginderSingh\Desktop\RC\DAL\bin\Debug\DAL.dll
+C:\Users\JoginderSingh\Desktop\RC\DAL\bin\Debug\DAL.pdb
+C:\Users\JoginderSingh\Desktop\RC\DAL\bin\Debug\INI.dll
+C:\Users\JoginderSingh\Desktop\RC\DAL\bin\Debug\INI.pdb
+C:\Users\JoginderSingh\Desktop\RC\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\JoginderSingh\Desktop\RC\DAL\obj\Debug\DAL.dll
+C:\Users\JoginderSingh\Desktop\RC\DAL\obj\Debug\DAL.pdb
+E:\Piyush\Projects\RC\RC\DAL\bin\Debug\DAL.dll
+E:\Piyush\Projects\RC\RC\DAL\bin\Debug\DAL.pdb
+E:\Piyush\Projects\RC\RC\DAL\bin\Debug\INI.dll
+E:\Piyush\Projects\RC\RC\DAL\bin\Debug\INI.pdb
+E:\Piyush\Projects\RC\RC\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\Piyush\Projects\RC\RC\DAL\obj\Debug\DAL.dll
+E:\Piyush\Projects\RC\RC\DAL\obj\Debug\DAL.pdb
+E:\Piyush\Projects\RC_Gujarat\DAL\bin\Debug\DAL.dll
+E:\Piyush\Projects\RC_Gujarat\DAL\bin\Debug\DAL.pdb
+E:\Piyush\Projects\RC_Gujarat\DAL\bin\Debug\INI.dll
+E:\Piyush\Projects\RC_Gujarat\DAL\bin\Debug\INI.pdb
+E:\Piyush\Projects\RC_Gujarat\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\Piyush\Projects\RC_Gujarat\DAL\obj\Debug\DAL.dll
+E:\Piyush\Projects\RC_Gujarat\DAL\obj\Debug\DAL.pdb
+C:\Users\JoginderSingh\Desktop\Gujrat Final With Everything 28_05_2016\Project Folder\RC_Gujarat\DAL\bin\Debug\DAL.dll
+C:\Users\JoginderSingh\Desktop\Gujrat Final With Everything 28_05_2016\Project Folder\RC_Gujarat\DAL\bin\Debug\DAL.pdb
+C:\Users\JoginderSingh\Desktop\Gujrat Final With Everything 28_05_2016\Project Folder\RC_Gujarat\DAL\bin\Debug\INI.dll
+C:\Users\JoginderSingh\Desktop\Gujrat Final With Everything 28_05_2016\Project Folder\RC_Gujarat\DAL\bin\Debug\INI.pdb
+C:\Users\JoginderSingh\Desktop\Gujrat Final With Everything 28_05_2016\Project Folder\RC_Gujarat\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\JoginderSingh\Desktop\Gujrat Final With Everything 28_05_2016\Project Folder\RC_Gujarat\DAL\obj\Debug\DAL.dll
+C:\Users\JoginderSingh\Desktop\Gujrat Final With Everything 28_05_2016\Project Folder\RC_Gujarat\DAL\obj\Debug\DAL.pdb
+D:\Rozmerta  Project\RC-Jharkhand\DAL\bin\Debug\DAL.dll
+D:\Rozmerta  Project\RC-Jharkhand\DAL\bin\Debug\DAL.pdb
+D:\Rozmerta  Project\RC-Jharkhand\DAL\bin\Debug\INI.dll
+D:\Rozmerta  Project\RC-Jharkhand\DAL\bin\Debug\INI.pdb
+D:\Rozmerta  Project\RC-Jharkhand\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Rozmerta  Project\RC-Jharkhand\DAL\obj\Debug\DAL.dll
+D:\Rozmerta  Project\RC-Jharkhand\DAL\obj\Debug\DAL.pdb
+D:\16.06.2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\bin\Debug\DAL.dll
+D:\16.06.2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\bin\Debug\DAL.pdb
+D:\16.06.2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\bin\Debug\INI.dll
+D:\16.06.2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\bin\Debug\INI.pdb
+D:\16.06.2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\16.06.2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\obj\Debug\DAL.dll
+D:\16.06.2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\obj\Debug\DAL.pdb
+D:\Rozmerta  Project\Jharkhand 27-06-2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\bin\Debug\DAL.dll
+D:\Rozmerta  Project\Jharkhand 27-06-2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\bin\Debug\DAL.pdb
+D:\Rozmerta  Project\Jharkhand 27-06-2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\bin\Debug\INI.dll
+D:\Rozmerta  Project\Jharkhand 27-06-2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\bin\Debug\INI.pdb
+D:\Rozmerta  Project\Jharkhand 27-06-2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Rozmerta  Project\Jharkhand 27-06-2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\obj\Debug\DAL.dll
+D:\Rozmerta  Project\Jharkhand 27-06-2016\RC-Jharkhand-maste-1606r\RC-Jharkhand-master\DAL\obj\Debug\DAL.pdb
+D:\Rozmerta  Project\Attendance Master\DAL\bin\Debug\DAL.dll
+D:\Rozmerta  Project\Attendance Master\DAL\bin\Debug\DAL.pdb
+D:\Rozmerta  Project\Attendance Master\DAL\bin\Debug\INI.dll
+D:\Rozmerta  Project\Attendance Master\DAL\bin\Debug\INI.pdb
+D:\Rozmerta  Project\Attendance Master\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Rozmerta  Project\Attendance Master\DAL\obj\Debug\DAL.dll
+D:\Rozmerta  Project\Attendance Master\DAL\obj\Debug\DAL.pdb

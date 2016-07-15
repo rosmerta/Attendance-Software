@@ -1,0 +1,9 @@
+D:\Rozmerta  Project\Attendance Master\BAL\bin\Debug\BAL.dll
+D:\Rozmerta  Project\Attendance Master\BAL\bin\Debug\BAL.pdb
+D:\Rozmerta  Project\Attendance Master\BAL\bin\Debug\DAL.dll
+D:\Rozmerta  Project\Attendance Master\BAL\bin\Debug\INI.dll
+D:\Rozmerta  Project\Attendance Master\BAL\bin\Debug\DAL.pdb
+D:\Rozmerta  Project\Attendance Master\BAL\bin\Debug\INI.pdb
+D:\Rozmerta  Project\Attendance Master\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
+D:\Rozmerta  Project\Attendance Master\BAL\obj\Debug\BAL.dll
+D:\Rozmerta  Project\Attendance Master\BAL\obj\Debug\BAL.pdb

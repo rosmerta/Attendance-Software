@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>InstallManager</id>
+    <version>1.1.0</version>
+    <title>InstallManager</title>
+    <authors>Baloghp</authors>
+    <owners>Baloghp</owners>
+    <licenseUrl>http://msiinstallmanager.codeplex.com/license</licenseUrl>
+    <projectUrl>http://msiinstallmanager.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>MSI Install Manager is an API that allows you to install an MSI within a .NET application. You can create a WPF install experience and drive the execution of the MSI within.
+(In fact you can use command line, Winforms, or any other .NET capable client )</description>
+    <summary>Microsoft Public License (Ms-PL)
+
+This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the</summary>
+    <tags>Installation Installer MSI setup MSI installer WPF</tags>
+  </metadata>
+</package>
