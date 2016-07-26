@@ -13,6 +13,8 @@ using DPUruNet;
 using System.Threading;
 using System.Drawing.Imaging;
 using System.Globalization;
+using System.Net;
+using Newtonsoft.Json;
 namespace Attendance_Master
 {
     public partial class PunchMaster : Form
@@ -91,6 +93,8 @@ namespace Attendance_Master
         }
         private void PunchMaster_Load(object sender, EventArgs e)
         {
+           
+
 
             // Register ObjRegister = new Register();
             //DataTable dt= ObjRegister.GetRecordsBasedOnThumbExpression();
@@ -441,7 +445,21 @@ namespace Attendance_Master
         private void timer1_Tick(object sender, EventArgs e)
         {
             digitalDisplayControl1.DigitText = DateTime.Now.ToString("HH:mm:ss");
+            lblDate.Text = DateTime.Now.ToString("dd-MM-yyyy");
         }
 
-    }
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+      
+        }
+
+    
 }
