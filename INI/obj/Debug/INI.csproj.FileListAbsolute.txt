@@ -52,3 +52,7 @@ D:\Rozmerta  Project\Attendance Master\INI\bin\Debug\INI.dll
 D:\Rozmerta  Project\Attendance Master\INI\bin\Debug\INI.pdb
 D:\Rozmerta  Project\Attendance Master\INI\obj\Debug\INI.dll
 D:\Rozmerta  Project\Attendance Master\INI\obj\Debug\INI.pdb
+D:\Rozmerta  Project\Attendance-Software\INI\bin\Debug\INI.dll
+D:\Rozmerta  Project\Attendance-Software\INI\bin\Debug\INI.pdb
+D:\Rozmerta  Project\Attendance-Software\INI\obj\Debug\INI.dll
+D:\Rozmerta  Project\Attendance-Software\INI\obj\Debug\INI.pdb

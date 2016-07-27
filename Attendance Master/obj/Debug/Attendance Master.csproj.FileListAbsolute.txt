@@ -20,10 +20,10 @@ D:\Rozmerta  Project\Attendance Master\Attendance Master\DAL.pdb
 D:\Rozmerta  Project\Attendance Master\Attendance Master\Microsoft.Expression.Encoder.Utilities.xml
 D:\Rozmerta  Project\Attendance Master\Attendance Master\Microsoft.Expression.Encoder.Types.xml
 D:\Rozmerta  Project\Attendance Master\Attendance Master\INI.pdb
-D:\Rozmerta  Project\Attendance-Software\Attendance Master\Attendance Master.exe.config
-D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance Master.exe
-D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance Master.pdb
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\Attendance Master.exe
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\CarlosAg.ExcelXmlWriter.dll
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance Master.csprojResolveAssemblyReference.cache
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance_Master.GetRecords.resources
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance_Master.MDDI.resources
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance_Master.PunchMaster.resources
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance_Master.FormRegisterUser.resources
@@ -31,20 +31,24 @@ D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance_
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance Master.csproj.GenerateResource.Cache
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance Master.exe.manifest
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance Master.application
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\Attendance Master.exe.config
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\Attendance Master.exe.manifest
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\Attendance Master.application
-D:\Rozmerta  Project\Attendance-Software\Attendance Master\Attendance Master.exe
-D:\Rozmerta  Project\Attendance-Software\Attendance Master\Attendance Master.pdb
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance Master.exe
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\obj\Debug\Attendance Master.pdb
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\BAL.dll
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\Microsoft.Expression.Encoder.dll
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\Newtonsoft.Json.dll
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\Owf.Controls.DigitalDisplayControl.dll
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\DAL.dll
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\Microsoft.Expression.Encoder.Utilities.dll
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\Microsoft.Expression.Encoder.Types.dll
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\INI.dll
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\BAL.pdb
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\Newtonsoft.Json.xml
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\Owf.Controls.DigitalDisplayControl.pdb
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\DAL.pdb
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\Microsoft.Expression.Encoder.Utilities.xml
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\Microsoft.Expression.Encoder.Types.xml
 D:\Rozmerta  Project\Attendance-Software\Attendance Master\INI.pdb
-D:\Rozmerta  Project\Attendance-Software\Attendance Master\Owf.Controls.DigitalDisplayControl.dll
-D:\Rozmerta  Project\Attendance-Software\Attendance Master\Owf.Controls.DigitalDisplayControl.pdb
+D:\Rozmerta  Project\Attendance-Software\Attendance Master\Attendance Master.pdb

@@ -89,3 +89,10 @@ D:\Rozmerta  Project\Attendance Master\DAL\bin\Debug\INI.pdb
 D:\Rozmerta  Project\Attendance Master\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 D:\Rozmerta  Project\Attendance Master\DAL\obj\Debug\DAL.dll
 D:\Rozmerta  Project\Attendance Master\DAL\obj\Debug\DAL.pdb
+D:\Rozmerta  Project\Attendance-Software\DAL\bin\Debug\DAL.dll
+D:\Rozmerta  Project\Attendance-Software\DAL\bin\Debug\DAL.pdb
+D:\Rozmerta  Project\Attendance-Software\DAL\bin\Debug\INI.dll
+D:\Rozmerta  Project\Attendance-Software\DAL\bin\Debug\INI.pdb
+D:\Rozmerta  Project\Attendance-Software\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Rozmerta  Project\Attendance-Software\DAL\obj\Debug\DAL.dll
+D:\Rozmerta  Project\Attendance-Software\DAL\obj\Debug\DAL.pdb

@@ -32,6 +32,7 @@
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.attendanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.getReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +50,8 @@
             // 
             this.homeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registerUsersToolStripMenuItem,
-            this.attendanceToolStripMenuItem});
+            this.attendanceToolStripMenuItem,
+            this.getReportsToolStripMenuItem});
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
             this.homeToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.homeToolStripMenuItem.Text = "Home";
@@ -57,16 +59,23 @@
             // registerUsersToolStripMenuItem
             // 
             this.registerUsersToolStripMenuItem.Name = "registerUsersToolStripMenuItem";
-            this.registerUsersToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.registerUsersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.registerUsersToolStripMenuItem.Text = "Register Users";
             this.registerUsersToolStripMenuItem.Click += new System.EventHandler(this.registerUsersToolStripMenuItem_Click);
             // 
             // attendanceToolStripMenuItem
             // 
             this.attendanceToolStripMenuItem.Name = "attendanceToolStripMenuItem";
-            this.attendanceToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.attendanceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.attendanceToolStripMenuItem.Text = "Attendance ";
             this.attendanceToolStripMenuItem.Click += new System.EventHandler(this.attendanceToolStripMenuItem_Click);
+            // 
+            // getReportsToolStripMenuItem
+            // 
+            this.getReportsToolStripMenuItem.Name = "getReportsToolStripMenuItem";
+            this.getReportsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.getReportsToolStripMenuItem.Text = "Get Reports";
+            this.getReportsToolStripMenuItem.Click += new System.EventHandler(this.getReportsToolStripMenuItem_Click);
             // 
             // MDDI
             // 
@@ -92,6 +101,7 @@
         private System.Windows.Forms.ToolStripMenuItem homeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registerUsersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem attendanceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem getReportsToolStripMenuItem;
 
     }
 }

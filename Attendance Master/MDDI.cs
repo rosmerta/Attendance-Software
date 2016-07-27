@@ -30,5 +30,12 @@ namespace Attendance_Master
             ObjPunchMaster.Show();
            
         }
+
+        private void getReportsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GetRecords ObjGetRecords = new GetRecords();
+            ObjGetRecords.IsMdiContainer = true;
+            ObjGetRecords.Show();
+        }
     }
 }

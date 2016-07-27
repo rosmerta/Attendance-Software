@@ -63,6 +63,9 @@
     <Reference Include="BAL">
       <HintPath>..\BAL\bin\Debug\BAL.dll</HintPath>
     </Reference>
+    <Reference Include="CarlosAg.ExcelXmlWriter">
+      <HintPath>bin\Debug\CarlosAg.ExcelXmlWriter.dll</HintPath>
+    </Reference>
     <Reference Include="DPUruNet, Version=1.0.0.1, Culture=neutral, PublicKeyToken=7f32ef930fec5e5f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\DPUruNet.dll</HintPath>
@@ -92,6 +95,12 @@
   <ItemGroup>
     <Compile Include="Capture.cs" />
     <Compile Include="FingureCapture.cs" />
+    <Compile Include="GetRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetRecords.Designer.cs">
+      <DependentUpon>GetRecords.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDDI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +121,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GetRecords.resx">
+      <DependentUpon>GetRecords.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MDDI.resx">
       <DependentUpon>MDDI.cs</DependentUpon>
     </EmbeddedResource>

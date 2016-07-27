@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetRecords.cs" />
     <Compile Include="CommanCLS.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Register.cs" />

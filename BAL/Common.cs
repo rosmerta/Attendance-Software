@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -1102,6 +1103,14 @@ namespace BAL
 
             return destImage;
         }
+
+        public static DataTable ReturnDataTableBasedOnStoreProcedure(string stroeProcedureName)
+        {
+            DMLSql objDMLSql = new DMLSql();
+
+            return objDMLSql.GetRecords(stroeProcedureName, CommandType.StoredProcedure);
+        }
+
 
 
 
