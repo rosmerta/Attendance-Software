@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbEmployeeName = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtFrom = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtTo = new System.Windows.Forms.DateTimePicker();
             this.BtnSearch = new System.Windows.Forms.Button();
+            this.dtTo = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtFrom = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbEmployeeName = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -58,59 +59,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Searching";
             // 
-            // cmbEmployeeName
-            // 
-            this.cmbEmployeeName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEmployeeName.FormattingEnabled = true;
-            this.cmbEmployeeName.Location = new System.Drawing.Point(166, 25);
-            this.cmbEmployeeName.Name = "cmbEmployeeName";
-            this.cmbEmployeeName.Size = new System.Drawing.Size(195, 28);
-            this.cmbEmployeeName.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label1.Location = new System.Drawing.Point(26, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 28);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Employee Name";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dtFrom
-            // 
-            this.dtFrom.Location = new System.Drawing.Point(556, 23);
-            this.dtFrom.Name = "dtFrom";
-            this.dtFrom.Size = new System.Drawing.Size(200, 26);
-            this.dtFrom.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label2.Location = new System.Drawing.Point(379, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 28);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "From";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label3.Location = new System.Drawing.Point(778, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(134, 28);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "To";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dtTo
-            // 
-            this.dtTo.Location = new System.Drawing.Point(902, 26);
-            this.dtTo.Name = "dtTo";
-            this.dtTo.Size = new System.Drawing.Size(200, 26);
-            this.dtTo.TabIndex = 5;
-            // 
             // BtnSearch
             // 
             this.BtnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -122,6 +70,59 @@
             this.BtnSearch.UseVisualStyleBackColor = true;
             this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
+            // dtTo
+            // 
+            this.dtTo.Location = new System.Drawing.Point(902, 26);
+            this.dtTo.Name = "dtTo";
+            this.dtTo.Size = new System.Drawing.Size(200, 26);
+            this.dtTo.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label3.Location = new System.Drawing.Point(778, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(134, 28);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "To";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label2.Location = new System.Drawing.Point(379, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 28);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "From";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dtFrom
+            // 
+            this.dtFrom.Location = new System.Drawing.Point(556, 23);
+            this.dtFrom.Name = "dtFrom";
+            this.dtFrom.Size = new System.Drawing.Size(200, 26);
+            this.dtFrom.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label1.Location = new System.Drawing.Point(26, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 28);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Employee Name";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cmbEmployeeName
+            // 
+            this.cmbEmployeeName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEmployeeName.FormattingEnabled = true;
+            this.cmbEmployeeName.Location = new System.Drawing.Point(166, 25);
+            this.cmbEmployeeName.Name = "cmbEmployeeName";
+            this.cmbEmployeeName.Size = new System.Drawing.Size(195, 28);
+            this.cmbEmployeeName.TabIndex = 0;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -129,6 +130,11 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1356, 350);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.CheckFileExists = true;
+            this.saveFileDialog1.DefaultExt = "xls,.xlsx";
             // 
             // GetRecords
             // 
@@ -157,5 +163,6 @@
         private System.Windows.Forms.DateTimePicker dtFrom;
         private System.Windows.Forms.Button BtnSearch;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

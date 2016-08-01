@@ -30,12 +30,35 @@ namespace Attendance_Master
             cmbEmployeeName.DisplayMember = "Name";
         }
 
+        int Index = 0;
+
+        private int IndexIncrement()
+        {
+            Index += 1;
+            return Index;
+        }
         private void BtnSearch_Click(object sender, EventArgs e)
         {
+            Index = 0;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = @"D:\";
+            saveFileDialog1.Title = "Save text Files";
+            //saveFileDialog1.CheckFileExists = true;
+            //saveFileDialog1.CheckPathExists = true;
+            saveFileDialog1.DefaultExt = "txt";
+            saveFileDialog1.Filter = "Excel files (*.xls)|*.xls";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            string fileName = string.Empty;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                fileName = saveFileDialog1.FileName;
+            }
             CarlosAg.ExcelXmlWriter.Workbook or = new Workbook();
 
             //Add a workbook
-            string fileName = @"C:\Sample.xls";
+
             CarlosAg.ExcelXmlWriter.Workbook book = new CarlosAg.ExcelXmlWriter.Workbook();
 
             // Specify which Sheet should be opened and the size of window by default
@@ -46,7 +69,7 @@ namespace Attendance_Master
             book.ExcelWorkbook.WindowWidth = 8000;
 
             // Some optional properties of the Document
-            book.Properties.Author = "Murali";
+            book.Properties.Author = "Joginder Singh";
             book.Properties.Title = "Excel Export";
             book.Properties.Created = DateTime.Now;
 
@@ -76,184 +99,262 @@ namespace Attendance_Master
 
 
             // Add a Worksheet with some data
-            Worksheet sheet = book.Worksheets.Add("Sample Data");
-            // we can optionally set some column settings
-            //sheet.Table.Columns.Add(new WorksheetColumn(100));
-            //sheet.Table.Columns.Add(new WorksheetColumn(100));
-            //sheet.Table.Columns.Add(new WorksheetColumn(250));
-
-            WorksheetRow TitleRows = sheet.Table.Rows.Add();
-            TitleRows.Index = 0;
-            TitleRows.Height = 26;
-            TitleRows.AutoFitHeight = true;
-
-
-
-
-
-            //Add header text for the columns	
+            Worksheet sheet = book.Worksheets.Add(Common.ConvertMonth(Convert.ToDateTime( dtFrom.Text).ToShortDateString()));
+         
             DataTable Obj = new System.Data.DataTable();
             Obj = ReturnColumnName();
 
             DataTable GetRecords = new System.Data.DataTable();
             GetRecord ObjRegister = new GetRecord();
 
-            GetRecords = ObjRegister.GetRecordsAttendanceLog(1065, Convert.ToDateTime(dtFrom.Text));
+            DataTable GetEmployeeID = Common.ReturnDataTableBasedOnStoreProcedure("GetRecordsEmployee");
 
 
-            bool AddEmptyCell = false;
-
-
-
-            for (int i = 1; i <= Obj.Columns.Count; i++)
+            for (int Employee = 0; Employee < GetEmployeeID.Rows.Count; Employee++)
             {
-                if (i == Obj.Columns.Count / 2)
+
+
+                WorksheetRow TitleRows = sheet.Table.Rows.Add();
+                TitleRows.Index = IndexIncrement();
+                TitleRows.Height = 26;
+                TitleRows.AutoFitHeight = true;
+
+
+                int EmployeeID = Convert.ToInt32(GetEmployeeID.Rows[Employee]["Name"].ToString().Split('(')[1].Split(')')[0]);
+                GetRecords = ObjRegister.GetRecordsAttendanceLog(EmployeeID, Convert.ToDateTime(dtFrom.Text));
+
+
+                bool AddEmptyCell = false;
+                for (int i = 1; i <= Obj.Columns.Count; i++)
                 {
-                    WorksheetCell wcHeader = new WorksheetCell("Joginder Singh Banger", "HeaderStyle");
-                    TitleRows.Cells.Add(wcHeader);
-                }
-                else
-                {
-                    WorksheetCell wcHeader = new WorksheetCell();
-                    TitleRows.Cells.Add(wcHeader);
-                }
-
-            }
-
-            //Add row with some properties
-            WorksheetRow row = sheet.Table.Rows.Add();
-            row.Index = 1;
-            row.Height = 26;
-            row.AutoFitHeight = true;
-
-            WorksheetRow intime1 = sheet.Table.Rows.Add();
-            intime1.Index = 2;
-            intime1.Height = 26;
-            intime1.AutoFitHeight = true;
-            WorksheetRow intime2 = sheet.Table.Rows.Add();
-            intime2.Index = 3;
-            intime2.Height = 26;
-            intime2.AutoFitHeight = true;
-            WorksheetRow intime3 = sheet.Table.Rows.Add();
-            intime3.Index = 4;
-            intime3.Height = 26;
-            intime3.AutoFitHeight = true;
-            WorksheetRow intime4 = sheet.Table.Rows.Add();
-            intime4.Index = 5;
-            intime4.Height = 26;
-            intime4.AutoFitHeight = true;
-
-            for (int i = 1; i <= Obj.Columns.Count; i++)
-            {
-                bool Intime1 = false, Intime2 = false, Intime3 = false, Intime4 = false;
-                bool Empty = false, Empty1 = false, Empty2 = false, Empty3 = false;
-
-                if (!AddEmptyCell)
-                {
-                    WorksheetCell EmptyCell = new WorksheetCell("DAY", "HeaderStyle");
-                    row.Cells.Add(EmptyCell);
-                    AddEmptyCell = true;
-                    WorksheetCell IN = new WorksheetCell("IN", "HeaderStyle");
-                    intime1.Cells.Add(IN);
-                    WorksheetCell Out = new WorksheetCell("OUT", "HeaderStyle");
-                    intime2.Cells.Add(Out);
-                    WorksheetCell IN1 = new WorksheetCell("IN1", "HeaderStyle");
-                    intime3.Cells.Add(IN1);
-                    WorksheetCell OUT1 = new WorksheetCell("OUT1", "HeaderStyle");
-                    intime4.Cells.Add(OUT1);
-                }
-                WorksheetCell wcHeader = new WorksheetCell(i.ToString(), "HeaderStyle");
-                row.Cells.Add(wcHeader);
-
-                int CountNumber = 0;
-                for (int j = 0; j < GetRecords.Rows.Count; j++)
-                {
-                    CountNumber += 1;
-                    if (Convert.ToInt32(GetRecords.Rows[j]["INOUTDate"]) == i)
+                    if (i == Obj.Columns.Count / 2)
                     {
+                        WorksheetCell wcHeader = new WorksheetCell("Employee ID : "+ GetEmployeeID.Rows[Employee]["Name"].ToString().Split('(')[1].Split(')')[0]+" Name : "+ GetEmployeeID.Rows[Employee]["Name"].ToString().Split('(')[0], "HeaderStyle");
+                        TitleRows.Cells.Add(wcHeader);
+                    }
+                    else
+                    {
+                        WorksheetCell wcHeader = new WorksheetCell();
+                        TitleRows.Cells.Add(wcHeader);
+                    }
+
+                }
+
+                //Add row with some properties
+                WorksheetRow row = sheet.Table.Rows.Add();
+                row.Index = IndexIncrement();
+                row.Height = 26;
+                row.AutoFitHeight = true;
+
+                WorksheetRow intime1 = sheet.Table.Rows.Add();
+                intime1.Index = IndexIncrement();
+                intime1.Height = 26;
+                intime1.AutoFitHeight = true;
+
+                WorksheetRow intime2 = sheet.Table.Rows.Add();
+                intime2.Index = IndexIncrement();
+                intime2.Height = 26;
+                intime2.AutoFitHeight = true;
+                WorksheetRow intime3 = sheet.Table.Rows.Add();
+                intime3.Index = IndexIncrement();
+                intime3.Height = 26;
+                intime3.AutoFitHeight = true;
+                WorksheetRow intime4 = sheet.Table.Rows.Add();
+                intime4.Index = IndexIncrement();
+                intime4.Height = 26;
+                intime4.AutoFitHeight = true;
+                WorksheetRow intime6 = sheet.Table.Rows.Add();
+                intime6.Index = IndexIncrement();
+                intime6.Height = 26;
+                intime6.AutoFitHeight = true;
+                WorksheetRow intime7 = sheet.Table.Rows.Add();
+                intime7.Index = IndexIncrement();
+                intime7.Height = 26;
+                intime7.AutoFitHeight = true;
+                WorksheetRow Status = sheet.Table.Rows.Add();
+                Status.Index = IndexIncrement();
+                Status.Height = 26;
+                Status.AutoFitHeight = true;
+
+                WorksheetRow TotalReports = sheet.Table.Rows.Add();
+                TotalReports.Index = IndexIncrement();
+                TotalReports.Height = 26;
+                TotalReports.AutoFitHeight = true;
+                int Persent = 0, WeekOff = 0, MISPunch = 0, Abbsent = 0;
+
+                for (int i = 1; i <= Obj.Columns.Count; i++)
+                {
+                    bool Intime1 = false, Intime2 = false, Intime3 = false, Intime4 = false;
+                    bool Empty = false, Empty1 = false, Empty2 = false, Empty3 = false, isMIS = false;
+
+                    if (i < Obj.Columns.Count / 2)
+                    {
+                        WorksheetCell ReporstStatus = new WorksheetCell();
+                        TotalReports.Cells.Add(ReporstStatus);
+                    }
 
 
-                        if (Intime4)
+
+                    if (!AddEmptyCell)
+                    {
+                        WorksheetCell EmptyCell = new WorksheetCell("DAY", "HeaderStyle");
+                        row.Cells.Add(EmptyCell);
+                        AddEmptyCell = true;
+                        WorksheetCell IN = new WorksheetCell("IN", "HeaderStyle");
+                        intime1.Cells.Add(IN);
+                        WorksheetCell Out = new WorksheetCell("OUT", "HeaderStyle");
+                        intime2.Cells.Add(Out);
+                        WorksheetCell IN1 = new WorksheetCell("IN1", "HeaderStyle");
+                        intime3.Cells.Add(IN1);
+                        WorksheetCell OUT1 = new WorksheetCell("OUT1", "HeaderStyle");
+                        intime4.Cells.Add(OUT1);
+                        WorksheetCell IN2 = new WorksheetCell("IN2", "HeaderStyle");
+                        intime6.Cells.Add(IN2);
+                        WorksheetCell OUT2 = new WorksheetCell("OUT2", "HeaderStyle");
+                        intime7.Cells.Add(OUT2);
+                        WorksheetCell StatusHeader = new WorksheetCell("Status", "HeaderStyle");
+                        Status.Cells.Add(StatusHeader);
+                        WorksheetCell StatusTotal = new WorksheetCell("Reports", "HeaderStyle");
+                        TotalReports.Cells.Add(StatusTotal);
+                    }
+                    WorksheetCell wcHeader = new WorksheetCell(i.ToString(), "HeaderStyle");
+                    row.Cells.Add(wcHeader);
+
+                    int CountNumber = 0;
+                    bool IsPersent = false;
+                    for (int j = 0; j < GetRecords.Rows.Count; j++)
+                    {
+                        CountNumber += 1;
+
+
+
+                        if (Convert.ToInt32(GetRecords.Rows[j]["INOUTDate"]) == i)
                         {
 
-                            WorksheetCell INOutTime = new WorksheetCell(GetRecords.Rows[j]["INOUTTime"].ToString(), "HeaderStyle");
-                            intime4.Cells.Add(INOutTime);
-                            Empty3 = true;
-
-                        }
-                        else
-                            if (Intime3)
+                            IsPersent = true;
+                            if (Intime4)
                             {
-
+                                isMIS = false;
                                 WorksheetCell INOutTime = new WorksheetCell(GetRecords.Rows[j]["INOUTTime"].ToString(), "HeaderStyle");
-                                intime3.Cells.Add(INOutTime);
-                                Intime4 = true;
-                                Empty2 = true;
+                                intime4.Cells.Add(INOutTime);
+                                Empty3 = true;
 
                             }
                             else
-                                if (Intime2)
+                                if (Intime3)
                                 {
-
+                                    isMIS = true;
                                     WorksheetCell INOutTime = new WorksheetCell(GetRecords.Rows[j]["INOUTTime"].ToString(), "HeaderStyle");
-                                    intime2.Cells.Add(INOutTime);
-                                    Intime3 = true;
-                                    Empty1 = true;
+                                    intime3.Cells.Add(INOutTime);
+                                    Intime4 = true;
+                                    Empty2 = true;
+
+                                }
+                                else
+                                    if (Intime2)
+                                    {
+                                        isMIS = false;
+                                        WorksheetCell INOutTime = new WorksheetCell(GetRecords.Rows[j]["INOUTTime"].ToString(), "HeaderStyle");
+                                        intime2.Cells.Add(INOutTime);
+                                        Intime3 = true;
+                                        Empty1 = true;
+                                    }
+                                    else
+                                    {
+                                        isMIS = true;
+                                        Intime1 = true;
+                                        WorksheetCell INOutTime = new WorksheetCell(GetRecords.Rows[j]["INOUTTime"].ToString(), "HeaderStyle");
+                                        intime1.Cells.Add(INOutTime);
+                                        Intime2 = true;
+                                        Empty = true;
+
+                                    }
+
+                        }
+
+                        if (CountNumber == GetRecords.Rows.Count)
+                        {
+                            if (!Empty)
+                            {
+                                Empty = true;
+                                WorksheetCell INOutTime = new WorksheetCell();
+                                intime1.Cells.Add(INOutTime);
+                            }
+                            if (!Empty1)
+                            {
+                                Empty1 = true;
+                                WorksheetCell INOutTime1 = new WorksheetCell();
+                                intime2.Cells.Add(INOutTime1);
+                            }
+                            if (!Empty2)
+                            {
+                                Empty2 = true;
+                                WorksheetCell INOutTime2 = new WorksheetCell();
+                                intime3.Cells.Add(INOutTime2);
+                            }
+                            if (!Empty3)
+                            {
+                                Empty3 = true;
+                                WorksheetCell INOutTime3 = new WorksheetCell();
+                                intime4.Cells.Add(INOutTime3);
+                            }
+                            if (IsPersent)
+                            {
+                                string PersentORMIS = string.Empty;
+                                if (isMIS)
+                                {
+                                    MISPunch += 1;
+                                    PersentORMIS = "MIS";
                                 }
                                 else
                                 {
-
-                                    Intime1 = true;
-                                    WorksheetCell INOutTime = new WorksheetCell(GetRecords.Rows[j]["INOUTTime"].ToString(), "HeaderStyle");
-                                    intime1.Cells.Add(INOutTime);
-                                    Intime2 = true;
-                                    Empty = true;
+                                    Persent += 1;
+                                    PersentORMIS = "P";
+                                }
+                                WorksheetCell WorkStatus = new WorksheetCell(PersentORMIS, "HeaderStyle");
+                                Status.Cells.Add(WorkStatus);
+                            }
+                            else
+                            {
+                                int Month = Convert.ToDateTime(dtFrom.Text).Month;
+                                int Year = Convert.ToDateTime(dtFrom.Text).Year;
+                                int Day = i;
+                                string TempDate = Convert.ToDateTime(Day + "-" + Month + "-" + Year).ToShortDateString();
+                                string SundayORAbbesent = string.Empty;
+                                if (Convert.ToDateTime(TempDate).DayOfWeek == DayOfWeek.Sunday)
+                                {
+                                    WeekOff += 1;
+                                    SundayORAbbesent = "WO";
+                                }
+                                else
+                                {
+                                    Abbsent += 1;
+                                    SundayORAbbesent = "A";
 
                                 }
+                                WorksheetCell WorkStatus = new WorksheetCell(SundayORAbbesent, "HeaderStyle");
+                                Status.Cells.Add(WorkStatus);
+                            }
+
+                        }
 
                     }
 
-                    if (CountNumber == GetRecords.Rows.Count)
-                    {
-                        if (!Empty)
-                        {
-                            Empty = true;
-                            WorksheetCell INOutTime = new WorksheetCell();
-                            intime1.Cells.Add(INOutTime);
-                        }
-                        if (!Empty1)
-                        {
-                            Empty1 = true;
-                            WorksheetCell INOutTime1 = new WorksheetCell();
-                            intime2.Cells.Add(INOutTime1);
-                        }
-                        if (!Empty2)
-                        {
-                            Empty2 = true;
-                            WorksheetCell INOutTime2 = new WorksheetCell();
-                            intime3.Cells.Add(INOutTime2);
-                        }
-                        if (!Empty3)
-                        {
-                            Empty3 = true;
-                            WorksheetCell INOutTime3 = new WorksheetCell();
-                            intime4.Cells.Add(INOutTime3);
-                        }
-
-                    }
 
                 }
 
 
+                string Reports = "Reports OF Month Week Off=" + WeekOff + " Persent= " + Persent + " Mis Punch= " + MISPunch + " Abbsent =" + Abbsent + "";
+                WorksheetCell ReporstStatusAdd = new WorksheetCell(Reports, "HeaderStyle");
+                TotalReports.Cells.Add(ReporstStatusAdd);
+
+
+
+                //Save the work book
+                book.Save(fileName);
+
+
             }
-
-
-
-            //Save the work book
-            book.Save(fileName);
-
-
-
         }
 
         public System.Data.DataTable ReturnColumnName()
