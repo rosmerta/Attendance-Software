@@ -11,7 +11,6 @@ namespace BAL
 {
     public class Register
     {
-
         /// <summary>
         /// Insert Data In Database using Stroe Procedure....
         /// </summary>
@@ -26,12 +25,8 @@ namespace BAL
         /// <param name="thumbImpression2"></param>
         /// 
         /// <returns>Return 0 or 1.....if return 1 or 2 that means save the data in database..</returns>
-        public int InsertDataForRegisterUser(string employeeID, string name, string address, string fkOfficeId, int createdBy, byte [] image, string thumbImpression, string thumbImpression1, string thumbImpression2)
+        public int InsertDataForRegisterUser(string employeeID, string name, string address, string fkOfficeId, int createdBy, byte [] image, byte [] thumbImpression, byte [] thumbImpression1, byte  [] thumbImpression2)
         {
-
-            
-
-            DMLSql obj = new DMLSql();
             try
             {
                 string Query = "InsertRegisterEmployee";
@@ -44,46 +39,33 @@ namespace BAL
                 cmd.Parameters.Add("@fkOfficeId", SqlDbType.VarChar).Value =fkOfficeId;
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.VarChar).Value= createdBy;
                 cmd.Parameters.Add("@EmployeeImage", SqlDbType.Binary).Value = image;
-                cmd.Parameters.Add("@ThoumbImpression", SqlDbType.VarChar).Value = thumbImpression;
-                cmd.Parameters.Add("@ThoumbImpression2", SqlDbType.VarChar).Value=thumbImpression1;
-                cmd.Parameters.Add("@ThoumbImpression3", SqlDbType.VarChar).Value=thumbImpression2;
-
-
-
-                return obj.ExecuteNonquery(cmd);
+                cmd.Parameters.Add("@ThoumbImpression", SqlDbType.Binary).Value = thumbImpression;
+                cmd.Parameters.Add("@ThoumbImpression2", SqlDbType.Binary).Value = thumbImpression1;
+                cmd.Parameters.Add("@ThoumbImpression3", SqlDbType.Binary).Value = thumbImpression2;
+                return DMLSql.MYInstance.ExecuteNonquery(cmd);
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
         public DataTable GetRecordsBasedOnThumbExpression()
         {
-            DMLSql obj = new DMLSql();
             try
             {
-                
                 string Query = "GetRecordsBasedOnThumbExpression";
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = Query;
                 cmd.CommandType = CommandType.StoredProcedure;
-                
-                return obj.GetRecords(cmd);
+                return DMLSql.MYInstance.GetRecords(cmd);
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
-
         public int IN_AttendanceLog(string employeeID)
         {
-            DMLSql obj = new DMLSql();
             try
             {
                 string Query = "InsertAttendanceLog_IN";
@@ -91,21 +73,15 @@ namespace BAL
                 cmd.CommandText = Query;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@employeeId", SqlDbType.VarChar).Value = employeeID;
-                return obj.ExecuteNonquery(cmd);
+                return DMLSql.MYInstance.ExecuteNonquery(cmd);
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
-        
-
         public string GetEmployeeForValidateRecords(string employeeID)
         {
-            DMLSql obj = new DMLSql();
             try
             {
                 string Query = "GetEmployeeForValidateRecords";
@@ -113,20 +89,12 @@ namespace BAL
                 cmd.CommandText = Query;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@employeeId", SqlDbType.VarChar).Value = employeeID;
-                return obj.GetSingleRecord(cmd);
+                return DMLSql.MYInstance.GetSingleRecord(cmd);
             }
             catch (Exception)
             {
-
                 throw;
             }
-
-
         }
-
-        
-
-
-
     }
 }

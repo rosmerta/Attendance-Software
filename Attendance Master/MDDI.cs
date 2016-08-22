@@ -37,5 +37,14 @@ namespace Attendance_Master
             ObjGetRecords.IsMdiContainer = true;
             ObjGetRecords.Show();
         }
+
+        private void userRegistrationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            UserRegistration ObjUserRegistration = new UserRegistration();
+            ObjUserRegistration.IsMdiContainer = true;
+            ObjUserRegistration.Show();
+        
+        }
     }
 }

@@ -53,12 +53,15 @@
             this.BtnSave = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BtnReSet = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.LblStatus = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThridFinger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SecondFinger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstFinger)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // button2
@@ -190,6 +193,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
@@ -203,7 +207,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.groupBox2.Location = new System.Drawing.Point(493, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(687, 584);
+            this.groupBox2.Size = new System.Drawing.Size(687, 616);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Image";
@@ -212,7 +216,7 @@
             // 
             this.label6.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(408, 547);
+            this.label6.Location = new System.Drawing.Point(411, 524);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(190, 25);
             this.label6.TabIndex = 11;
@@ -223,7 +227,7 @@
             // 
             this.label5.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(209, 546);
+            this.label5.Location = new System.Drawing.Point(212, 523);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(193, 26);
             this.label5.TabIndex = 10;
@@ -234,7 +238,7 @@
             // 
             this.label4.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 546);
+            this.label4.Location = new System.Drawing.Point(9, 523);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(190, 26);
             this.label4.TabIndex = 9;
@@ -276,7 +280,7 @@
             // ThridFinger
             // 
             this.ThridFinger.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ThridFinger.Location = new System.Drawing.Point(408, 355);
+            this.ThridFinger.Location = new System.Drawing.Point(411, 332);
             this.ThridFinger.Name = "ThridFinger";
             this.ThridFinger.Size = new System.Drawing.Size(190, 188);
             this.ThridFinger.TabIndex = 7;
@@ -285,7 +289,7 @@
             // SecondFinger
             // 
             this.SecondFinger.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SecondFinger.Location = new System.Drawing.Point(212, 355);
+            this.SecondFinger.Location = new System.Drawing.Point(215, 332);
             this.SecondFinger.Name = "SecondFinger";
             this.SecondFinger.Size = new System.Drawing.Size(190, 188);
             this.SecondFinger.TabIndex = 6;
@@ -294,7 +298,7 @@
             // FirstFinger
             // 
             this.FirstFinger.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FirstFinger.Location = new System.Drawing.Point(6, 355);
+            this.FirstFinger.Location = new System.Drawing.Point(9, 332);
             this.FirstFinger.Name = "FirstFinger";
             this.FirstFinger.Size = new System.Drawing.Size(190, 188);
             this.FirstFinger.TabIndex = 5;
@@ -317,7 +321,7 @@
             // 
             this.BtnSave.BackColor = System.Drawing.Color.Green;
             this.BtnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSave.Location = new System.Drawing.Point(566, 46);
+            this.BtnSave.Location = new System.Drawing.Point(571, 19);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(209, 48);
             this.BtnSave.TabIndex = 8;
@@ -329,9 +333,9 @@
             // 
             this.groupBox3.Controls.Add(this.BtnReSet);
             this.groupBox3.Controls.Add(this.BtnSave);
-            this.groupBox3.Location = new System.Drawing.Point(12, 602);
+            this.groupBox3.Location = new System.Drawing.Point(12, 628);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1085, 100);
+            this.groupBox3.Size = new System.Drawing.Size(1162, 74);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Action ";
@@ -340,13 +344,32 @@
             // 
             this.BtnReSet.BackColor = System.Drawing.Color.Salmon;
             this.BtnReSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnReSet.Location = new System.Drawing.Point(852, 46);
+            this.BtnReSet.Location = new System.Drawing.Point(857, 19);
             this.BtnReSet.Name = "BtnReSet";
             this.BtnReSet.Size = new System.Drawing.Size(209, 48);
             this.BtnReSet.TabIndex = 9;
             this.BtnReSet.Text = "Reset";
             this.BtnReSet.UseVisualStyleBackColor = false;
             this.BtnReSet.Click += new System.EventHandler(this.BtnReSet_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.LblStatus);
+            this.groupBox4.Location = new System.Drawing.Point(12, 562);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(669, 48);
+            this.groupBox4.TabIndex = 12;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Status";
+            // 
+            // LblStatus
+            // 
+            this.LblStatus.AutoSize = true;
+            this.LblStatus.Location = new System.Drawing.Point(179, 16);
+            this.LblStatus.Name = "LblStatus";
+            this.LblStatus.Size = new System.Drawing.Size(37, 13);
+            this.LblStatus.TabIndex = 0;
+            this.LblStatus.Text = "Status";
             // 
             // FormRegisterUser
             // 
@@ -368,6 +391,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.SecondFinger)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstFinger)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -400,6 +425,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label LblStatus;
     }
 }
 

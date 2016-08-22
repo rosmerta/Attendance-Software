@@ -33,13 +33,16 @@
             this.registerUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.attendanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.getReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.managementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userRegistrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.homeToolStripMenuItem});
+            this.homeToolStripMenuItem,
+            this.managementsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(551, 24);
@@ -59,23 +62,38 @@
             // registerUsersToolStripMenuItem
             // 
             this.registerUsersToolStripMenuItem.Name = "registerUsersToolStripMenuItem";
-            this.registerUsersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.registerUsersToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.registerUsersToolStripMenuItem.Text = "Register Users";
             this.registerUsersToolStripMenuItem.Click += new System.EventHandler(this.registerUsersToolStripMenuItem_Click);
             // 
             // attendanceToolStripMenuItem
             // 
             this.attendanceToolStripMenuItem.Name = "attendanceToolStripMenuItem";
-            this.attendanceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.attendanceToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.attendanceToolStripMenuItem.Text = "Attendance ";
             this.attendanceToolStripMenuItem.Click += new System.EventHandler(this.attendanceToolStripMenuItem_Click);
             // 
             // getReportsToolStripMenuItem
             // 
             this.getReportsToolStripMenuItem.Name = "getReportsToolStripMenuItem";
-            this.getReportsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.getReportsToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.getReportsToolStripMenuItem.Text = "Get Reports";
             this.getReportsToolStripMenuItem.Click += new System.EventHandler(this.getReportsToolStripMenuItem_Click);
+            // 
+            // managementsToolStripMenuItem
+            // 
+            this.managementsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userRegistrationToolStripMenuItem});
+            this.managementsToolStripMenuItem.Name = "managementsToolStripMenuItem";
+            this.managementsToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.managementsToolStripMenuItem.Text = "Managements";
+            // 
+            // userRegistrationToolStripMenuItem
+            // 
+            this.userRegistrationToolStripMenuItem.Name = "userRegistrationToolStripMenuItem";
+            this.userRegistrationToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.userRegistrationToolStripMenuItem.Text = "User Registration";
+            this.userRegistrationToolStripMenuItem.Click += new System.EventHandler(this.userRegistrationToolStripMenuItem_Click);
             // 
             // MDDI
             // 
@@ -102,6 +120,8 @@
         private System.Windows.Forms.ToolStripMenuItem registerUsersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem attendanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem getReportsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem managementsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userRegistrationToolStripMenuItem;
 
     }
 }

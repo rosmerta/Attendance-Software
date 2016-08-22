@@ -36,10 +36,10 @@
             this.dtFrom = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbEmployeeName = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.GridView = new System.Windows.Forms.DataGridView();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridView)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -116,6 +116,8 @@
             // 
             // cmbEmployeeName
             // 
+            this.cmbEmployeeName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbEmployeeName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbEmployeeName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployeeName.FormattingEnabled = true;
             this.cmbEmployeeName.Location = new System.Drawing.Point(166, 25);
@@ -123,13 +125,13 @@
             this.cmbEmployeeName.Size = new System.Drawing.Size(195, 28);
             this.cmbEmployeeName.TabIndex = 0;
             // 
-            // dataGridView1
+            // GridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 103);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1356, 350);
-            this.dataGridView1.TabIndex = 1;
+            this.GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridView.Location = new System.Drawing.Point(12, 103);
+            this.GridView.Name = "GridView";
+            this.GridView.Size = new System.Drawing.Size(1356, 350);
+            this.GridView.TabIndex = 1;
             // 
             // saveFileDialog1
             // 
@@ -142,12 +144,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumTurquoise;
             this.ClientSize = new System.Drawing.Size(1389, 465);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.GridView);
             this.Controls.Add(this.groupBox1);
             this.Name = "GetRecords";
             this.Text = "Get Records";
+            this.Load += new System.EventHandler(this.GetRecords_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -162,7 +165,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtFrom;
         private System.Windows.Forms.Button BtnSearch;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView GridView;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

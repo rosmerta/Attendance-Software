@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Attendance Master.exe" size="80384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Attendance Master.exe" size="164352">
       <assemblyIdentity name="Attendance Master" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>uUbh7HiwGam+QwCzi2mIB/9Hm9ErhqBIqqcy81nrbHI=</dsig:DigestValue>
+        <dsig:DigestValue>KTUbuIHq9Z+KnuMMuJYG5hNIiHl/ACVzDVzHKDacQ8o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BAL.dll" size="19968">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BAL.dll" size="33792">
       <assemblyIdentity name="BAL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>3/6WVle8A22zdVFXAU6QIHSjWyHukl5cMD/rsMAL4oc=</dsig:DigestValue>
+        <dsig:DigestValue>4DOiC3yTdf5hE5d5XNVy0vXf3yFgFokb++NomDfhjqA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -78,14 +78,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DAL.dll" size="7168">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DAL.dll" size="7680">
       <assemblyIdentity name="DAL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>WghpnipuXOc1Y0L6jAt7UzxBhm5JBLq1o1vxAgnc6uU=</dsig:DigestValue>
+        <dsig:DigestValue>aV5kGyLpamrunnT5RWKg14lR9zmBSdb9+6C/tiKUEKU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -109,7 +109,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>7d8tm+yEgkMQIyF7FSLKVBAyZ+y5jkuTQF3SNxuHrJ8=</dsig:DigestValue>
+        <dsig:DigestValue>ZC+3JLlR+HpZeJKwZbYXlRn+XnJeY/6ftmSXdcc9du0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MANTRA.MFS100.dll" size="2859784">
+      <assemblyIdentity name="MANTRA.MFS100" version="9.0.2.2" publicKeyToken="84159D47B17D6C1F" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>RjX7ELSs0QPbGY1rKiNMCEz6Zdqid4Uaxmo3pKLUhjo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -173,13 +185,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Attendance Master.exe.config" size="187">
+  <file name="Attendance Master.exe.config" size="178">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+      <dsig:DigestValue>GeVWc5mJqwCsi2tx7Mngxkf9k2Lu9N280t9KH/IzkSM=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

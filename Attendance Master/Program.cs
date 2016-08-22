@@ -16,7 +16,7 @@ namespace Attendance_Master
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new  GetRecords());
+            Application.Run(new  Login());
         }
     }
 }

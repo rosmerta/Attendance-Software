@@ -10,6 +10,7 @@ D:\Rozmerta  Project\Attendance Master\BAL\obj\Debug\BAL.pdb
 D:\Rozmerta  Project\Attendance-Software\BAL\bin\Debug\BAL.dll
 D:\Rozmerta  Project\Attendance-Software\BAL\bin\Debug\BAL.pdb
 D:\Rozmerta  Project\Attendance-Software\BAL\bin\Debug\DAL.dll
+D:\Rozmerta  Project\Attendance-Software\BAL\bin\Debug\MANTRA.MFS100.dll
 D:\Rozmerta  Project\Attendance-Software\BAL\bin\Debug\INI.dll
 D:\Rozmerta  Project\Attendance-Software\BAL\bin\Debug\DAL.pdb
 D:\Rozmerta  Project\Attendance-Software\BAL\bin\Debug\INI.pdb

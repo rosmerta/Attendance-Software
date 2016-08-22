@@ -6,35 +6,26 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace BAL
 {
     public class GetRecord
-
     {
-        public DataTable GetRecordsAttendanceLog(int EmployeeID,DateTime MonthName)
+        public DataTable GetRecordsAttendanceLog(int employeeID,DateTime monthName)
         {
-
-            DMLSql obj = new DMLSql();
             try
             {
                 string Query = "GetRecordsAttendanceLog";
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = Query;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@EmployeeId", SqlDbType.Int).Value = EmployeeID;
-                cmd.Parameters.Add("@MonthName", SqlDbType.DateTime).Value = MonthName;
-                return obj.GetRecords(cmd);
+                cmd.Parameters.Add("@EmployeeId", SqlDbType.Int).Value = employeeID;
+                cmd.Parameters.Add("@MonthName", SqlDbType.DateTime).Value = monthName;
+                return DMLSql.MYInstance.GetRecords(cmd);
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-      
     }
-
-   
 }

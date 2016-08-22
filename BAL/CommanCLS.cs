@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 namespace BAL
 {
     public class CommanCLS
@@ -11,6 +10,5 @@ namespace BAL
         public string RegistrationId { get; set; }
         public string ApplyDate { get; set; }
         public int CreatedBy { get; set; }
-
     }
 }

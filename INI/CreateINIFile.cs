@@ -1,10 +1,7 @@
-
 // *** INIFile class test ***
 using System;
 using System.IO;
 using System.Text;
-
-
 namespace INI
 {
     public  class CreateINIFile
@@ -17,7 +14,6 @@ namespace INI
         string DatabaseName = string.Empty;
         public CreateINIFile(string fileName)
         {
-          
             FileName = fileName;
         }
         private static string PrintByteArray(byte[] Value)
@@ -37,7 +33,6 @@ namespace INI
 	        }
 	        return sb.ToString();
         }
-
         #region Create INI File- this File is created only First Time..
         public bool CreateFile(string serverName, string userName, string password, string dSN, string databaseName)
         {
@@ -71,6 +66,5 @@ namespace INI
             return IsCreateFile;
         }
         #endregion
-	
 	}
 }

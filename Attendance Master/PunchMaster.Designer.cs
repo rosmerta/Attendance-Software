@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.PicEmployee = new System.Windows.Forms.PictureBox();
             this.FirstFinger = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblEmployeeId = new System.Windows.Forms.Label();
@@ -41,26 +41,27 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Timerview = new System.Windows.Forms.Timer(this.components);
             this.digitalDisplayControl1 = new Owf.Controls.DigitalDisplayControl();
             this.lblDate = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.FingerTimer = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.PicEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstFinger)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // PicEmployee
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(516, 54);
-            this.pictureBox1.MaximumSize = new System.Drawing.Size(327, 252);
-            this.pictureBox1.MinimumSize = new System.Drawing.Size(327, 252);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(327, 252);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.PicEmployee.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PicEmployee.Location = new System.Drawing.Point(516, 54);
+            this.PicEmployee.MaximumSize = new System.Drawing.Size(327, 252);
+            this.PicEmployee.MinimumSize = new System.Drawing.Size(327, 252);
+            this.PicEmployee.Name = "PicEmployee";
+            this.PicEmployee.Size = new System.Drawing.Size(327, 252);
+            this.PicEmployee.TabIndex = 0;
+            this.PicEmployee.TabStop = false;
             // 
             // FirstFinger
             // 
@@ -78,7 +79,7 @@
             this.groupBox1.Controls.Add(this.lblEmployeeName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.LblName);
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.PicEmployee);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Navy;
@@ -88,7 +89,6 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Personal Information";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // lblEmployeeId
             // 
@@ -103,7 +103,6 @@
             this.lblEmployeeId.Size = new System.Drawing.Size(328, 29);
             this.lblEmployeeId.TabIndex = 6;
             this.lblEmployeeId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblEmployeeId.Visible = false;
             // 
             // label3
             // 
@@ -133,7 +132,6 @@
             this.lblEmployeeName.Size = new System.Drawing.Size(328, 29);
             this.lblEmployeeName.TabIndex = 4;
             this.lblEmployeeName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblEmployeeName.Visible = false;
             // 
             // label1
             // 
@@ -176,7 +174,6 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Action";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // label2
             // 
@@ -217,9 +214,9 @@
             this.lblStatus.TabIndex = 3;
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // timer1
+            // Timerview
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.Timerview.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // digitalDisplayControl1
             // 
@@ -268,7 +265,7 @@
             this.Text = "Punch Master";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PunchMaster_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstFinger)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -279,7 +276,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox PicEmployee;
         private System.Windows.Forms.PictureBox FirstFinger;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
@@ -290,9 +287,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer Timerview;
         private Owf.Controls.DigitalDisplayControl digitalDisplayControl1;
         private System.Windows.Forms.Label lblEmployeeId;
         private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Timer FingerTimer;
     }
 }

@@ -8,19 +8,15 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
-
 namespace INI
 {
-
 	public class INIFile
     {
         #region CreateINIFIle
         #endregion
         #region "Declarations"
-
         // *** Lock for thread-safe access to file and local cache ***
 		private object m_Lock = new object();
-
 		// *** File name ***
 		private string m_FileName = null;
 		internal string FileName
@@ -30,34 +26,26 @@ namespace INI
 				return m_FileName;
 			}
 		}
-
 		// *** Lazy loading flag ***
 		private bool m_Lazy = false;
-
         // *** Automatic flushing flag ***
         private bool m_AutoFlush = false;
-
 		// *** Local cache ***
         private Dictionary<string, Dictionary<string, string>> m_Sections = new Dictionary<string, Dictionary<string, string>>();
         private Dictionary<string, Dictionary<string, string>> m_Modified = new Dictionary<string, Dictionary<string, string>>(); 
-
 		// *** Local cache modified flag ***
 		private bool m_CacheModified = false;
-
 #endregion
         #region "Methods"
-
 		// *** Constructor ***
 		public INIFile(string FileName)
 		{
 			Initialize(FileName, false, false);
 		}
-
 		public INIFile(string FileName, bool Lazy, bool AutoFlush)
 		{
             Initialize(FileName, Lazy, AutoFlush);
 		}
-
 		// *** Initialization ***
         private void Initialize(string FileName, bool Lazy, bool AutoFlush)
 		{
@@ -66,7 +54,6 @@ namespace INI
             m_AutoFlush = AutoFlush;
 			if (!m_Lazy) Refresh();
 		}
-
         // *** Parse section name ***
         private string ParseSectionName(string Line)
         {
@@ -75,22 +62,18 @@ namespace INI
             if (Line.Length < 3) return null;
             return Line.Substring(1, Line.Length - 2);
         }
-
         // *** Parse key+value pair ***
         private bool ParseKeyValuePair(string Line, ref string Key, ref string Value)
         {
             // *** Check for key+value pair ***
             int i;
             if ((i = Line.IndexOf('=')) <= 0) return false;
-            
             int j = Line.Length - i - 1;
             Key = Line.Substring(0, i).Trim();
             if (Key.Length <= 0) return false;
-
             Value = (j > 0) ? (Line.Substring(i + 1, j).Trim()) : ("");
             return true;
         }
-
 		// *** Read file contents into local cache ***
 		internal void Refresh()
 		{
@@ -102,7 +85,6 @@ namespace INI
 					// *** Clear local cache ***
 					m_Sections.Clear();
                     m_Modified.Clear();
-
 					// *** Open the INI file ***
 					try
 					{
@@ -112,7 +94,6 @@ namespace INI
 					{
 						return;
 					}
-
 					// *** Read up the file content ***
 					Dictionary<string, string> CurrentSection = null;
 					string s;
@@ -122,7 +103,6 @@ namespace INI
 					while ((s = sr.ReadLine()) != null)
 					{
 						s = s.Trim();
-						
 						// *** Check for section names ***
                         SectionName = ParseSectionName(s);
                         if (SectionName != null)
@@ -160,7 +140,6 @@ namespace INI
 				}
 			}
 		}
-		
 		// *** Flush local cache content ***
 		internal void Flush()
         {
@@ -169,25 +148,19 @@ namespace INI
                 PerformFlush();
             }
         }
-
         private void PerformFlush()
         {
             // *** If local cache was not modified, exit ***
             if (!m_CacheModified) return;
             m_CacheModified = false;
-
             // *** Check if original file exists ***
             bool OriginalFileExists = File.Exists(m_FileName);
-
             // *** Get temporary file name ***
             string TmpFileName = Path.ChangeExtension(m_FileName, "$n$");
-
             // *** Copy content of original file to temporary file, replace modified values ***
             StreamWriter sw = null;
-
             // *** Create the temporary file ***
             sw = new StreamWriter(TmpFileName);
-
             try
             {
                 Dictionary<string, string> CurrentSection = null;
@@ -198,7 +171,6 @@ namespace INI
                     {
                         // *** Open the original file ***
                         sr = new StreamReader(m_FileName);
-
                         // *** Read the file original content, replace changes with local cache values ***
                         string s;
                         string SectionName;
@@ -210,7 +182,6 @@ namespace INI
                         {
                             s = sr.ReadLine();
                             Reading = (s != null);
-
                             // *** Check for end of file ***
                             if (Reading)
                             {
@@ -223,7 +194,6 @@ namespace INI
                                 Unmodified = false;
                                 SectionName = null;
                             }
-
                             // *** Check for section names ***
                             if ((SectionName != null) || (!Reading))
                             {
@@ -245,7 +215,6 @@ namespace INI
                                         CurrentSection.Clear();
                                     }
                                 }
-
                                 if (Reading)
                                 {
                                     // *** Check if current section is in local modified cache ***
@@ -265,21 +234,18 @@ namespace INI
                                         // *** Write modified value to temporary file ***
                                         Unmodified = false;
                                         CurrentSection.Remove(Key);
-
                                         sw.Write(Key);
                                         sw.Write('=');
                                         sw.WriteLine(Value);
                                     }
                                 }
                             }
-
                             // *** Write unmodified lines from the original file ***
                             if (Unmodified)
                             {
                                 sw.WriteLine(s);
                             }
                         }
-
                         // *** Close the original file ***
                         sr.Close();
                         sr = null;
@@ -291,7 +257,6 @@ namespace INI
                         sr = null;
                     }
                 }
-
                 // *** Cycle on all remaining modified values ***
                 foreach (KeyValuePair<string, Dictionary<string, string>> SectionPair in m_Modified)
                 {
@@ -299,12 +264,10 @@ namespace INI
                     if (CurrentSection.Count > 0)
                     {
                         sw.WriteLine();
-
                         // *** Write the section name ***
                         sw.Write('[');
                         sw.Write(SectionPair.Key);
                         sw.WriteLine(']');
-
                         // *** Cycle on all key+value pairs in the section ***
                         foreach (KeyValuePair<string, string> ValuePair in CurrentSection)
                         {
@@ -317,14 +280,11 @@ namespace INI
                     }
                 }
                 m_Modified.Clear();
-
                 // *** Close the temporary file ***
                 sw.Close();
                 sw = null;
-
                 // *** Rename the temporary file ***
                 File.Copy(TmpFileName, m_FileName, true);
-
                 // *** Delete the temporary file ***
                 File.Delete(TmpFileName);
             }
@@ -335,7 +295,6 @@ namespace INI
                 sw = null;
             }
         }
-	
 		// *** Read a value from local cache ***
 		internal string GetValue(string SectionName, string Key, string DefaultValue)
 		{
@@ -345,22 +304,18 @@ namespace INI
 				m_Lazy = false;
 				Refresh();
 			}
-
 			lock (m_Lock)
 			{
 				// *** Check if the section exists ***
 				Dictionary<string, string> Section;
 				if (!m_Sections.TryGetValue(SectionName, out Section)) return DefaultValue;
-
 				// *** Check if the key exists ***
 				string Value;
 				if (!Section.TryGetValue(Key, out Value)) return DefaultValue;
-			
 				// *** Return the found value ***
 				return Value;
 			}
 		}
-
 		// *** Insert or modify a value in local cache ***
 		internal void SetValue(string SectionName, string Key, string Value)
 		{
@@ -370,12 +325,10 @@ namespace INI
 				m_Lazy = false;
 				Refresh();
 			}
-
 			lock (m_Lock)
 			{
 				// *** Flag local cache modification ***
 				m_CacheModified = true;
-
 				// *** Check if the section exists ***
 				Dictionary<string, string> Section;
 				if (!m_Sections.TryGetValue(SectionName, out Section))
@@ -384,31 +337,25 @@ namespace INI
 					Section = new Dictionary<string, string>();
 					m_Sections.Add(SectionName,Section);
 				}
-
 				// *** Modify the value ***
 				if (Section.ContainsKey(Key)) Section.Remove(Key);
 				Section.Add(Key, Value);
-
                 // *** Add the modified value to local modified values cache ***
                 if (!m_Modified.TryGetValue(SectionName, out Section))
                 {
                     Section = new Dictionary<string, string>();
                     m_Modified.Add(SectionName, Section);
                 }
-
                 if (Section.ContainsKey(Key)) Section.Remove(Key);
                 Section.Add(Key, Value);
-
                 // *** Automatic flushing : immediately write any modification to the file ***
                 if (m_AutoFlush) PerformFlush();
 			}
 		}
-
 		// *** Encode byte array ***
         private string EncodeByteArray(byte[] Value)
         {
             if (Value == null) return null;
-
             StringBuilder sb = new StringBuilder();
             foreach (byte b in Value)
             {
@@ -426,21 +373,17 @@ namespace INI
             }
             return sb.ToString();
         }
-
 		// *** Decode byte array ***
 		private byte[] DecodeByteArray(string Value)
 		{
 			if (Value == null) return null;
-
 			int l = Value.Length;
 			if (l < 2) return new byte[] { };
-			
 			l /= 2;
 			byte[] Result = new byte[l];
             for (int i = 0; i < l; i++) Result[i] = Convert.ToByte(Value.Substring(i * 2, 2), 16);
 			return Result;
 		}
-
 		// *** Getters for various types ***
 		internal bool GetValue(string SectionName, string Key, bool DefaultValue)
 		{
@@ -449,7 +392,6 @@ namespace INI
 			if (int.TryParse(StringValue, out Value)) return (Value != 0);
 			return DefaultValue;
 		}
-
 		internal int GetValue(string SectionName, string Key, int DefaultValue)
 		{
             string StringValue = GetValue(SectionName, Key, DefaultValue.ToString(CultureInfo.InvariantCulture));
@@ -457,7 +399,6 @@ namespace INI
 			if (int.TryParse(StringValue, NumberStyles.Any, CultureInfo.InvariantCulture, out Value)) return Value;
             return DefaultValue;
 		}
-
         internal long GetValue(string SectionName, string Key, long DefaultValue)
         {
             string StringValue = GetValue(SectionName, Key, DefaultValue.ToString(CultureInfo.InvariantCulture));
@@ -465,7 +406,6 @@ namespace INI
             if (long.TryParse(StringValue, NumberStyles.Any, CultureInfo.InvariantCulture, out Value)) return Value;
             return DefaultValue;
         }
-
 		internal double GetValue(string SectionName, string Key, double DefaultValue)
 		{
             string StringValue = GetValue(SectionName, Key, DefaultValue.ToString(CultureInfo.InvariantCulture));
@@ -473,7 +413,6 @@ namespace INI
 			if (double.TryParse(StringValue, NumberStyles.Any, CultureInfo.InvariantCulture, out Value)) return Value;
 			return DefaultValue;
 		}
-
 		internal byte[] GetValue(string SectionName, string Key, byte[] DefaultValue)
 		{
 			string StringValue = GetValue(SectionName, Key, EncodeByteArray(DefaultValue));
@@ -486,7 +425,6 @@ namespace INI
 				return DefaultValue;
 			}
 		}
-
         internal DateTime GetValue(string SectionName, string Key, DateTime DefaultValue)
         {
             string StringValue = GetValue(SectionName, Key, DefaultValue.ToString(CultureInfo.InvariantCulture));
@@ -494,40 +432,31 @@ namespace INI
             if (DateTime.TryParse(StringValue, CultureInfo.InvariantCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.NoCurrentDateDefault | DateTimeStyles.AssumeLocal, out Value)) return Value;
             return DefaultValue;
         }
-
 		// *** Setters for various types ***
 		internal void SetValue(string SectionName, string Key, bool Value)
 		{
 			SetValue(SectionName, Key, (Value) ? ("1") : ("0"));
 		}
-
         internal void SetValue(string SectionName, string Key, int Value)
         {
             SetValue(SectionName, Key, Value.ToString(CultureInfo.InvariantCulture));
         }
-
         internal void SetValue(string SectionName, string Key, long Value)
         {
             SetValue(SectionName, Key, Value.ToString(CultureInfo.InvariantCulture));
         }
-
 		internal void SetValue(string SectionName, string Key, double Value)
 		{
 			SetValue(SectionName, Key, Value.ToString(CultureInfo.InvariantCulture));
 		}
-
 		internal void SetValue(string SectionName, string Key, byte[] Value)
 		{
 			SetValue(SectionName, Key, EncodeByteArray(Value));
 		}
-
         internal void SetValue(string SectionName, string Key, DateTime Value)
         {
             SetValue(SectionName, Key, Value.ToString(CultureInfo.InvariantCulture));
         }
-
 #endregion
-
 	}
-
 }

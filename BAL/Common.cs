@@ -14,12 +14,20 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-
 namespace BAL
 {
-
     public class Common
     {
+       public enum IsSuccess { Sucess, NoSuccess };
+       public enum InDatabaseInsertData { Zero, One, Two };
+       public const string Success = "Success";
+       public const string SomeError = "SomeError";
+       public const int Quentity = 60;
+       public const int MatchThreshold = 14000;
+       public const int Timer = 0;
+       public enum LoginStatus { Correct,NameANDPasswordValidDateNOValid,EveryThingWrong }
+
+       public enum UserRoles { Admin, Users, SuperAdmin };
 
         /// <summary>
         /// Developer Joginder Singh
@@ -30,8 +38,6 @@ namespace BAL
         /// <returns></returns>
         /// 
         public const int DataInsertSuccessfully =0, IsValidateFinger=0, Zero=0,IsSameFinger=0;
-       
-
         /// <summary>
         /// Create a bitmap from raw data in row/column format.
         /// </summary>
@@ -42,7 +48,6 @@ namespace BAL
         public static Bitmap CreateBitmap(byte[] bytes, int width, int height)
         {
             byte[] rgbBytes = new byte[bytes.Length * 3];
-
             for (int i = 0; i <= bytes.Length - 1; i++)
             {
                 rgbBytes[(i * 3)] = bytes[i];
@@ -50,19 +55,17 @@ namespace BAL
                 rgbBytes[(i * 3) + 2] = bytes[i];
             }
             Bitmap bmp = new Bitmap(width, height, PixelFormat.Format24bppRgb);
-
             BitmapData data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
-
             for (int i = 0; i <= bmp.Height - 1; i++)
             {
                 IntPtr p = new IntPtr(data.Scan0.ToInt64() + data.Stride * i);
                 System.Runtime.InteropServices.Marshal.Copy(rgbBytes, i * bmp.Width * 3, p, bmp.Width * 3);
             }
-
             bmp.UnlockBits(data);
-
             return bmp;
         }
+
+       
         public static string Decode(string StringValue)
         {
             try
@@ -74,7 +77,6 @@ namespace BAL
                 throw;
             }
         }
-
         public static string Encode(string StringValue)
         {
             try
@@ -83,12 +85,9 @@ namespace BAL
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         public static byte[] ConvertStringToByteArray(object Name)
         {
             try
@@ -99,12 +98,9 @@ namespace BAL
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         public static byte[] FromBase64Bytes(byte[] base64Bytes)
         {
             try
@@ -114,13 +110,9 @@ namespace BAL
             }
             catch (Exception)
             {
-
                 throw;
             }
-
-
         }
-
         public static string FixBase64ForImage(string Image)
         {
             try
@@ -128,16 +120,12 @@ namespace BAL
                 System.Text.StringBuilder sbText = new System.Text.StringBuilder(Image, Image.Length);
                 sbText.Replace("\r\n", String.Empty); sbText.Replace(" ", String.Empty);
                 return sbText.ToString();
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         public static string ConvertByteArrayToString(byte[] bytes)
         {
             try
@@ -145,14 +133,11 @@ namespace BAL
                 char[] chars = new char[bytes.Length / sizeof(char)];
                 System.Buffer.BlockCopy(bytes, 0, chars, 0, bytes.Length);
                 return new string(chars);
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
         /// <summary>
         /// Return the Month Name Like 01-Dec-2015
@@ -165,30 +150,23 @@ namespace BAL
             {
                 if (ValidateStringValue(Date))
                 {
-
                     Date = Date.Replace('/', '-');
                     string[] Dateformat = Date.Split('-');
-
                     Date = Dateformat[0] + "-" + MonthName(Convert.ToInt32(Dateformat[1])) + "-" + Dateformat[2];
                     return Date;
                 }
                 else
                     return "No Values";
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         private static string MonthName(int m)
         {
             try
             {
-
                 string res;
                 switch (m)
                 {
@@ -236,30 +214,23 @@ namespace BAL
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         public static bool ValidateStringValue(string StringValue)
         {
             try
             {
                 if (StringValue != string.Empty && StringValue != "" && StringValue != null)
-
                     return true;
                 else
                     return false;
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         /// <summary>
         /// Add Row Data in the tables 
         /// </summary>
@@ -272,16 +243,13 @@ namespace BAL
         {
             try
             {
-
                 XmlNodeList ConList = null;
                 for (int i = 0; i < doc.GetElementsByTagName("application").Count; i++)
                 {
                     if (conditionValue != null)
-
                         ConList = doc.GetElementsByTagName("application").Item(i).SelectNodes(NodeName).Item(0).SelectNodes("covdet");
                     else
                         ConList = doc.GetElementsByTagName("application").Item(i).SelectNodes(NodeName);
-
                     foreach (XmlNode xn in ConList)
                     {
                         DataRow Row = TempraryTable.NewRow();
@@ -296,12 +264,9 @@ namespace BAL
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         public static DataTable InsertColumnsInTables(DataTable dataTable, string[] stringArray)
         {
             try
@@ -315,18 +280,12 @@ namespace BAL
                     }
                 }
                 return dataTable;
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
-
-
         }
-
         public static string ConvertToUpperCase(string text)
         {
             try
@@ -335,19 +294,15 @@ namespace BAL
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         public static string fieldValidation(String name, String userName, String password, String confirmPassword, int userType, String dateValidFrom, String dateValidTill)
         {
             try
             {
                 Regex rgx = null;
                 string errors = String.Empty;
-
                 //Validation for Name
                 rgx = new Regex(@"^[a-zA-Z]{5,30}$");
                 if (string.IsNullOrEmpty(name))
@@ -358,7 +313,6 @@ namespace BAL
                 {
                     errors += "Name is either invalid or too short or too long\n";
                 }
-
                 //Validation for UserName 
                 rgx = new Regex(@"^\w{2,20}$");
                 if (string.IsNullOrEmpty(userName))
@@ -369,7 +323,6 @@ namespace BAL
                 {
                     errors += "User Name is either invalid or too short or too long\n";
                 }
-
                 //Validation for Password and Confirm Password 
                 rgx = new Regex(@"^[a-zA-Z0-9.!#$%&'*+-=?^_`{|}~\/]{2,20}$");
                 if (string.IsNullOrEmpty(password))
@@ -388,19 +341,16 @@ namespace BAL
                 {
                     errors += " Confirm Password did not match Password\n";
                 }
-
                 //Validation for UserType
                 if (userType == -1)
                 {
                     errors += "Select User Type\n";
                 }
-
                 //Validation for Date Valid From
                 if (string.IsNullOrEmpty(dateValidFrom))
                 {
                     errors += "Date Valid From can not be empty\n";
                 }
-
                 //Validation Date Valid To
                 if (string.IsNullOrEmpty(dateValidTill))
                 {
@@ -410,30 +360,22 @@ namespace BAL
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         public static string monthOrDayCheck(string monthOrDay)
         {
             try
             {
-
                 if (monthOrDay.Length == 1)
                     monthOrDay = "0" + monthOrDay;
-
                 return monthOrDay;
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         /*******************************************************
       Warning, Error and Success Message
       * 
@@ -442,7 +384,6 @@ namespace BAL
       * Develop By Joginder Singh
       * 02-09-2016
       *******************************************************/
-
         public static void MessageBoxError(string message)
         {
             try
@@ -451,52 +392,39 @@ namespace BAL
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         public static void MessageBoxWarning(string message)
         {
             try
             {
                 MessageBox.Show(message, "Warning", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         public static void MessageBoxSuccess(string message)
         {
             try
             {
                 MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         public static void MessageBoxNone(string message)
         {
             MessageBox.Show(message, "", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
-
         public static void MessageBoxInformation(string message)
         {
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         // Encrypt a byte array into a byte array using a key and an IV 
         //
         public static byte[] Encrypt(byte[] clearData, byte[] Key, byte[] IV)
@@ -505,7 +433,6 @@ namespace BAL
             {
                 // Create a MemoryStream to accept the encrypted bytes 
                 MemoryStream ms = new MemoryStream();
-
                 // Create a symmetric algorithm. 
                 // We are going to use Rijndael because it is strong and
                 // available on all platforms. 
@@ -513,7 +440,6 @@ namespace BAL
                 // next line with something like 
                 //      TripleDES alg = TripleDES.Create(); 
                 Rijndael alg = Rijndael.Create();
-
                 // Now set the key and the IV. 
                 // We need the IV (Initialization Vector) because
                 // the algorithm is operating in its default 
@@ -523,12 +449,10 @@ namespace BAL
                 // encrypted block is XORed with the 
                 // following block of plaintext.
                 // This is done to make encryption more secure. 
-
                 // There is also a mode called ECB which does not need an IV,
                 // but it is much less secure. 
                 alg.Key = Key;
                 alg.IV = IV;
-
                 // Create a CryptoStream through which we are going to be
                 // pumping our data. 
                 // CryptoStreamMode.Write means that we are going to be
@@ -536,36 +460,27 @@ namespace BAL
                 // in the MemoryStream we have provided. 
                 CryptoStream cs = new CryptoStream(ms,
                    alg.CreateEncryptor(), CryptoStreamMode.Write);
-
                 // Write the data and make it do the encryption 
                 cs.Write(clearData, 0, clearData.Length);
-
                 // Close the crypto stream (or do FlushFinalBlock). 
                 // This will tell it that we have done our encryption and
                 // there is no more data coming in, 
                 // and it is now a good time to apply the padding and
                 // finalize the encryption process. 
                 cs.Close();
-
                 // Now get the encrypted data from the MemoryStream.
                 // Some people make a mistake of using GetBuffer() here,
                 // which is not the right way. 
                 byte[] encryptedData = ms.ToArray();
-
                 return encryptedData;
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         // Encrypt a string into a string using a password 
         //    Uses Encrypt(byte[], byte[], byte[]) 
-
         public static string Encrypt(string clearText, string Password)
         {
             try
@@ -573,7 +488,6 @@ namespace BAL
                 // First we need to turn the input string into a byte array. 
                 byte[] clearBytes =
                   System.Text.Encoding.Unicode.GetBytes(clearText);
-
                 // Then, we need to turn the password into Key and IV 
                 // We are using salt to make it harder to guess our key
                 // using a dictionary attack - 
@@ -581,7 +495,6 @@ namespace BAL
                 PasswordDeriveBytes pdb = new PasswordDeriveBytes(Password,
                     new byte[] {0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 
             0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76});
-
                 // Now get the key/IV and do the encryption using the
                 // function that accepts byte arrays. 
                 // Using PasswordDeriveBytes object we are first getting
@@ -596,7 +509,6 @@ namespace BAL
                 // the algorithm to find out the sizes. 
                 byte[] encryptedData = Encrypt(clearBytes,
                          pdb.GetBytes(32), pdb.GetBytes(16));
-
                 // Now we need to turn the resulting byte array into a string. 
                 // A common mistake would be to use an Encoding class for that.
                 //It does not work because not all byte values can be
@@ -604,20 +516,14 @@ namespace BAL
                 // We are going to be using Base64 encoding that is designed
                 //exactly for what we are trying to do. 
                 return Convert.ToBase64String(encryptedData);
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
-
         }
-
         // Encrypt bytes into bytes using a password 
         //    Uses Encrypt(byte[], byte[], byte[]) 
-
         public static byte[] Encrypt(byte[] clearData, string Password)
         {
             try
@@ -629,7 +535,6 @@ namespace BAL
                 PasswordDeriveBytes pdb = new PasswordDeriveBytes(Password,
                     new byte[] {0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 
             0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76});
-
                 // Now get the key/IV and do the encryption using the function
                 // that accepts byte arrays. 
                 // Using PasswordDeriveBytes object we are first getting
@@ -643,17 +548,12 @@ namespace BAL
                 // You can also read KeySize/BlockSize properties off the
                 // algorithm to find out the sizes. 
                 return Encrypt(clearData, pdb.GetBytes(32), pdb.GetBytes(16));
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
-
         }
-
         // Encrypt a file into another file using a password 
         //
         public static void Encrypt(string fileIn, string fileOut, string Password)
@@ -665,23 +565,19 @@ namespace BAL
                     FileMode.Open, FileAccess.Read);
                 FileStream fsOut = new FileStream(fileOut,
                     FileMode.OpenOrCreate, FileAccess.Write);
-
                 // Then we are going to derive a Key and an IV from the
                 // Password and create an algorithm 
                 PasswordDeriveBytes pdb = new PasswordDeriveBytes(Password,
                     new byte[] {0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 
             0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76});
-
                 Rijndael alg = Rijndael.Create();
                 alg.Key = pdb.GetBytes(32);
                 alg.IV = pdb.GetBytes(16);
-
                 // Now create a crypto stream through which we are going
                 // to be pumping data. 
                 // Our fileOut is going to be receiving the encrypted bytes. 
                 CryptoStream cs = new CryptoStream(fsOut,
                     alg.CreateEncryptor(), CryptoStreamMode.Write);
-
                 // Now will will initialize a buffer and will be processing
                 // the input file in chunks. 
                 // This is done to avoid reading the whole file (which can
@@ -689,42 +585,32 @@ namespace BAL
                 int bufferLen = 4096;
                 byte[] buffer = new byte[bufferLen];
                 int bytesRead;
-
                 do
                 {
                     // read a chunk of data from the input file 
                     bytesRead = fsIn.Read(buffer, 0, bufferLen);
-
                     // encrypt it 
                     cs.Write(buffer, 0, bytesRead);
                 } while (bytesRead != 0);
-
                 // close everything 
-
                 // this will also close the unrelying fsOut stream
                 cs.Close();
                 fsIn.Close();
             }
             catch (Exception)
             {
-
                 throw;
             }
-
-
         }
-
         // Decrypt a byte array into a byte array using a key and an IV 
         //
         public static byte[] Decrypt(byte[] cipherData, byte[] Key, byte[] IV)
         {
-
             try
             {
                 // Create a MemoryStream that is going to accept the
                 // decrypted bytes 
                 MemoryStream ms = new MemoryStream();
-
                 // Create a symmetric algorithm. 
                 // We are going to use Rijndael because it is strong and
                 // available on all platforms. 
@@ -732,7 +618,6 @@ namespace BAL
                 // line with something like 
                 //     TripleDES alg = TripleDES.Create(); 
                 Rijndael alg = Rijndael.Create();
-
                 // Now set the key and the IV. 
                 // We need the IV (Initialization Vector) because the algorithm
                 // is operating in its default 
@@ -745,7 +630,6 @@ namespace BAL
                 // but it is much less secure. 
                 alg.Key = Key;
                 alg.IV = IV;
-
                 // Create a CryptoStream through which we are going to be
                 // pumping our data. 
                 // CryptoStreamMode.Write means that we are going to be
@@ -754,45 +638,34 @@ namespace BAL
                 // we have provided. 
                 CryptoStream cs = new CryptoStream(ms,
                     alg.CreateDecryptor(), CryptoStreamMode.Write);
-
                 // Write the data and make it do the decryption 
                 cs.Write(cipherData, 0, cipherData.Length);
-
                 // Close the crypto stream (or do FlushFinalBlock). 
                 // This will tell it that we have done our decryption
                 // and there is no more data coming in, 
                 // and it is now a good time to remove the padding
                 // and finalize the decryption process. 
                 cs.Close();
-
                 // Now get the decrypted data from the MemoryStream. 
                 // Some people make a mistake of using GetBuffer() here,
                 // which is not the right way. 
                 byte[] decryptedData = ms.ToArray();
-
                 return decryptedData;
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         // Decrypt a string into a string using a password 
         //    Uses Decrypt(byte[], byte[], byte[]) 
-
         public static string Decrypt(string cipherText, string Password)
         {
             try
             {
-
                 // First we need to turn the input string into a byte array. 
                 // We presume that Base64 encoding was used 
                 byte[] cipherBytes = Convert.FromBase64String(cipherText);
-
                 // Then, we need to turn the password into Key and IV 
                 // We are using salt to make it harder to guess our key
                 // using a dictionary attack - 
@@ -800,7 +673,6 @@ namespace BAL
                 PasswordDeriveBytes pdb = new PasswordDeriveBytes(Password,
                     new byte[] {0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 
             0x64, 0x76, 0x65, 0x64, 0x65, 0x76});
-
                 // Now get the key/IV and do the decryption using
                 // the function that accepts byte arrays. 
                 // Using PasswordDeriveBytes object we are first
@@ -815,7 +687,6 @@ namespace BAL
                 // the algorithm to find out the sizes. 
                 byte[] decryptedData = Decrypt(cipherBytes,
                     pdb.GetBytes(32), pdb.GetBytes(16));
-
                 // Now we need to turn the resulting byte array into a string. 
                 // A common mistake would be to use an Encoding class for that.
                 // It does not work 
@@ -826,15 +697,11 @@ namespace BAL
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         // Decrypt bytes into bytes using a password 
         //    Uses Decrypt(byte[], byte[], byte[]) 
-
         public static byte[] Decrypt(byte[] cipherData, string Password)
         {
             try
@@ -846,7 +713,6 @@ namespace BAL
                 PasswordDeriveBytes pdb = new PasswordDeriveBytes(Password,
                     new byte[] {0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 
             0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76});
-
                 // Now get the key/IV and do the Decryption using the 
                 //function that accepts byte arrays. 
                 // Using PasswordDeriveBytes object we are first getting
@@ -857,20 +723,15 @@ namespace BAL
                 // 16 bytes (128 bit) for Rijndael. 
                 // If you are using DES/TripleDES/RC2 the block size is
                 // 8 bytes and so should be the IV size. 
-
                 // You can also read KeySize/BlockSize properties off the
                 // algorithm to find out the sizes. 
                 return Decrypt(cipherData, pdb.GetBytes(32), pdb.GetBytes(16));
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         // Decrypt a file into another file using a password 
         //
         public static void Decrypt(string fileIn, string fileOut, string Password)
@@ -882,23 +743,19 @@ namespace BAL
                             FileMode.Open, FileAccess.Read);
                 FileStream fsOut = new FileStream(fileOut,
                             FileMode.OpenOrCreate, FileAccess.Write);
-
                 // Then we are going to derive a Key and an IV from
                 // the Password and create an algorithm 
                 PasswordDeriveBytes pdb = new PasswordDeriveBytes(Password,
                     new byte[] {0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 
             0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76});
                 Rijndael alg = Rijndael.Create();
-
                 alg.Key = pdb.GetBytes(32);
                 alg.IV = pdb.GetBytes(16);
-
                 // Now create a crypto stream through which we are going
                 // to be pumping data. 
                 // Our fileOut is going to be receiving the Decrypted bytes. 
                 CryptoStream cs = new CryptoStream(fsOut,
                     alg.CreateDecryptor(), CryptoStreamMode.Write);
-
                 // Now will will initialize a buffer and will be 
                 // processing the input file in chunks. 
                 // This is done to avoid reading the whole file (which can be
@@ -906,31 +763,22 @@ namespace BAL
                 int bufferLen = 4096;
                 byte[] buffer = new byte[bufferLen];
                 int bytesRead;
-
                 do
                 {
                     // read a chunk of data from the input file 
                     bytesRead = fsIn.Read(buffer, 0, bufferLen);
-
                     // Decrypt it 
                     cs.Write(buffer, 0, bytesRead);
-
                 } while (bytesRead != 0);
-
                 // close everything 
                 cs.Close(); // this will also close the unrelying fsOut stream 
                 fsIn.Close();
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
-
         }
-
         public static byte[] ConvertBMPImageToByteArray(Image image)
         {
             try
@@ -946,15 +794,11 @@ namespace BAL
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
         public static string MakeBatchNo(string BatchNo)
         {
-
             try
             {
                 int length = 0;
@@ -971,10 +815,8 @@ namespace BAL
                     {
                         // get the date of BatchNo.
                         date = Convert.ToInt32(BatchNo.Substring(3, 8));
-
                         //get today date/
                         int TempDate = Convert.ToInt32(DateTime.Now.Date.ToString("yyyyMMdd"));
-
                         if (date == TempDate)
                         {
                             //get the last four digit no..
@@ -989,10 +831,8 @@ namespace BAL
                         {
                             BatchNo = "1";
                             length = Convert.ToInt32(BatchNo.Length);
-
                         }
                     }
-
                     // Append the zero based on values
                     switch (length)
                     {
@@ -1016,7 +856,6 @@ namespace BAL
             }
             return BatchNo;
         }
-
         /// Make A challan Number...
         /// </summary>
         /// <param name="NoofChallan"></param>
@@ -1027,7 +866,6 @@ namespace BAL
             {
                 NoofChallan = Convert.ToInt32(Convert.ToInt32(NoofChallan) + 1).ToString();
                 int length = NoofChallan.Length;
-
                 switch (length)
                 {
                     case 1:
@@ -1043,23 +881,17 @@ namespace BAL
                         break;
                 }
                 return NoofChallan;
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
-
         }
-
         public static string ValidateDate(string date)
         {
             if (ValidateStringValue(date))
             {
                 return date;
-
             }
             else
                 return "00000000";
@@ -1075,7 +907,6 @@ namespace BAL
         public static string SomthingWrongChipWritting = "Something Wrong when trying to update in RC_Cash table... after chip writting...";
         public const string ChipSuccess = "0:-Successfull";
         public const string CardFeedError = "Card Feed Error";
-
         public static class myPrinters
         {
             [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
@@ -1093,27 +924,41 @@ namespace BAL
                 graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
                 graphics.SmoothingMode = SmoothingMode.HighQuality;
                 graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
-
                 using (var wrapMode = new ImageAttributes())
                 {
                     wrapMode.SetWrapMode(WrapMode.TileFlipXY);
                     graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
                 }
             }
-
             return destImage;
         }
-
         public static DataTable ReturnDataTableBasedOnStoreProcedure(string stroeProcedureName)
         {
-            DMLSql objDMLSql = new DMLSql();
 
-            return objDMLSql.GetRecords(stroeProcedureName, CommandType.StoredProcedure);
+            return DMLSql.MYInstance.GetRecords(stroeProcedureName, CommandType.StoredProcedure);
         }
-
-
-
-
+        public static string FilePath(SaveFileDialog saveDialog)
+        {
+           
+            string FileName = string.Empty;
+            saveDialog.InitialDirectory = @"D:\";
+            saveDialog.Title = "Save text Files";
+            //saveFileDialog1.CheckFileExists = true;
+            //saveFileDialog1.CheckPathExists = true;
+            saveDialog.DefaultExt = "txt";
+            saveDialog.Filter = "Excel files (*.xls)|*.xls";
+            saveDialog.FilterIndex = 2;
+            saveDialog.RestoreDirectory = true;
+            string fileName = string.Empty;
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                FileName = saveDialog.FileName;
+            }
+            else
+            {
+                FileName = "No Name fill";
+            }
+            return FileName;
+        }
     }
-   
 }
