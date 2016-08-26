@@ -11,7 +11,7 @@ namespace BAL
 
     public class MFS:MFS100
     {
-        private static MFS instance = null;
+        public static MFS instance = null;
         private MFS() { }
         private static object lockThis = new object();
 

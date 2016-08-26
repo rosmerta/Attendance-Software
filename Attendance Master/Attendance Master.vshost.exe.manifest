@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Attendance Master.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Attendance Master.exe" version="1.0.0.9" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="Attendance Master" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Attendance Master.exe" size="164352">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Attendance Master.exe" size="1896960">
       <assemblyIdentity name="Attendance Master" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>KTUbuIHq9Z+KnuMMuJYG5hNIiHl/ACVzDVzHKDacQ8o=</dsig:DigestValue>
+        <dsig:DigestValue>gCjZcf1nj1grUZJI6+9X90bXTgmrQXteIuoyYnw49VE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4DOiC3yTdf5hE5d5XNVy0vXf3yFgFokb++NomDfhjqA=</dsig:DigestValue>
+        <dsig:DigestValue>mulzOvBbrIDru6WEwGAIs/uPjSgONHnht5XVrLFMVcc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -85,7 +85,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aV5kGyLpamrunnT5RWKg14lR9zmBSdb9+6C/tiKUEKU=</dsig:DigestValue>
+        <dsig:DigestValue>pK7rii/mfwU598LZIU/LkzNRVY2GiiP6miJT276Fk2A=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -109,7 +109,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZC+3JLlR+HpZeJKwZbYXlRn+XnJeY/6ftmSXdcc9du0=</dsig:DigestValue>
+        <dsig:DigestValue>stwRITOvmuUe5vabKD3pCuQu2+QV4ihs1MZY3kWUO2o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -192,6 +192,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>GeVWc5mJqwCsi2tx7Mngxkf9k2Lu9N280t9KH/IzkSM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Images\No data found.PNG" size="11750">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>9ctkfXlK8xmbZoNQG4lSDuvdLbD+iJjgVoUw7I7fmQs=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

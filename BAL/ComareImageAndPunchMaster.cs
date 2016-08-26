@@ -23,7 +23,6 @@ namespace BAL
         Label _LblEmployeeId = null;
         Label _LblEmployeeName = null;
 
-
         #endregion
         public void CompareImage(byte[] attachedFingerdata, byte[] DataAttachedFingerData)
         {
@@ -77,15 +76,19 @@ namespace BAL
                 if (CompleteDataForValidateRecords == null)
                 {
                     ObjRegister = new Register();
-                   
+
                     CompleteDataForValidateRecords = ObjRegister.GetRecordsBasedOnThumbExpression();
                 }
 
                 Task TT = Task.Run(() =>
                 {
+
                     if (CompleteDataForValidateRecords.Rows.Count > Common.Zero)
                     {
-                        for (int i = 0; i < CompleteDataForValidateRecords.Rows.Count; i++)
+                        int TempRowsCount = CompleteDataForValidateRecords.Rows.Count;
+                        bool UserRecordsMatch = false;
+
+                        for (int i = 0; i < TempRowsCount ; i++)
                         {
                             ListByteArray = new List<byte[]>();
                             _PictureBox.Image = null;
@@ -95,57 +98,57 @@ namespace BAL
                             ListByteArray.Add(FirstImageByte);
                             ListByteArray.Add(SecondImageByte);
                             ListByteArray.Add(ThridImageByte);
-                            byte[] Bytes = (byte[])CompleteDataForValidateRecords.Rows[i]["EmployeeImage"];
+                           
                             foreach (Byte[] FingerData in ListByteArray)
                             {
                                 CompareImage(_FingerImageData, FingerData);
                                 if (ImagesValidateScore > Common.MatchThreshold)
                                 {
+                                    UserRecordsMatch = true;
                                     if (ObjRegister.IN_AttendanceLog(CompleteDataForValidateRecords.Rows[i]["EmployeeID"].ToString()) <= Common.Zero)
                                     {
-                                        MFS.GInstance.StartCapture(Common.Quentity, Common.Timer, true);
+                                        _LblEmployeeId.Text = string.Empty;
+                                        _LblEmployeeName.Text = string.Empty;                                        
                                         _LblStatus.Text = "No Allowed ";
+                                        _LblStatus.ForeColor = Color.Red;
+                                        MFS.GInstance.StartCapture(Common.Quentity, Common.Timer, true);
                                     }
                                     else
-                                    {
-                                        _PictureBox.Image = (Bitmap)((new ImageConverter()).ConvertFrom(Bytes));
+                                    {  
+                                        _PictureBox.Image = (Bitmap)((new ImageConverter()).ConvertFrom((byte[])CompleteDataForValidateRecords.Rows[i]["EmployeeImage"]));
                                         _LblEmployeeId.Text = CompleteDataForValidateRecords.Rows[i]["EmployeeID"].ToString().Trim();
                                         _LblEmployeeName.Text = CompleteDataForValidateRecords.Rows[i]["Name"].ToString().Trim();
-                                       
                                         _LblStatus.Text = string.Empty;
                                         _LblStatus.Text = ReturnWelcomeMessage() + _LblEmployeeName.Text;
-                                        _LblStatus.ForeColor = Color.Green;
-                                        i = CompleteDataForValidateRecords.Rows.Count;
+                                        _LblStatus.ForeColor = Color.Green;                                      
+                                        System.Threading.Thread.Sleep(2000);
+                                        
                                     }
+                                    i = TempRowsCount;
                                     break;
+                                   
                                 }
-                                else
-                                {
-
-                                    if (_PictureBox.Image == null)
-                                    {
-                                        Task t = Task.Run(() =>
-                              {
-                                  MFS.GInstance.StartCapture(Common.Quentity, Common.Timer, true);
-                              });
-
-                                        t.Wait();
-                                        _PictureBox.Image = null;
-                                        _LblEmployeeId.Text = string.Empty;
-                                        _LblEmployeeName.Text = string.Empty;
-                                        _LblStatus.Text = "Please Try again";
-                                       
-                                    }
-                                }
+                               
                             }
                             // MFS.GInstance.StartCapture(Common.Quentity, Common.Timer, false);
                         }
+
+                        if(!UserRecordsMatch)
+                        {
+                            MFS.GInstance.StartCapture(Common.Quentity, Common.Timer, true);
+                            _PictureBox.Image = null;
+                            _LblEmployeeId.Text = string.Empty;
+                            _LblEmployeeName.Text = string.Empty;
+                            _LblStatus.Text = "Please Try again";
+                            _LblStatus.ForeColor = Color.Red;
+                        }
+                        
                     }
                     else
                         Common.MessageBoxInformation("No Records Found plz Contact to admin");
                 });
                 TT.Wait();
-              
+
             }
             catch (Exception ex)
             {
@@ -157,6 +160,8 @@ namespace BAL
                 GC.Collect();
             }
         }
+
+       
 
     }
 }

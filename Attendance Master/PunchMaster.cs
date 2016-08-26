@@ -36,9 +36,7 @@ namespace Attendance_Master
         {
             lblStatus.Text = "Please Wait";
             MantraFingerScanner ObjFingerScanner = new MantraFingerScanner();
-           
-           
-            ObjFingerScanner.MantraConnection(ref lblStatus,Common.Quentity, ref picturebox, true, PicEmployee, lblEmployeeName, lblEmployeeId);
+                ObjFingerScanner.MantraConnection(ref lblStatus, Common.Quentity, ref picturebox, true, PicEmployee, lblEmployeeName, lblEmployeeId);
             lblStatus.Text = "Put your finger on Finger Scanner";
 
         }
@@ -52,6 +50,15 @@ namespace Attendance_Master
             lblDate.Text = DateTime.Now.ToString("dd-MM-yyyy");
         }
 
+     
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+          
+                   Common.CloseMantraConnection();
+                   this.Close();
+           
+        }
         
     }
 }

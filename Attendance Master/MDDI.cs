@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,9 @@ namespace Attendance_Master
 
         private void registerUsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+            
+            
             FormRegisterUser ObjRegister = new FormRegisterUser();
             ObjRegister.Show();
             ObjRegister.MdiParent = this;
@@ -45,6 +49,21 @@ namespace Attendance_Master
             ObjUserRegistration.IsMdiContainer = true;
             ObjUserRegistration.Show();
         
+        }
+
+       
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Common.CloseMantraConnection();
+            Application.Exit();
+        }
+
+        private void MDDI_FormClosing(object sender, FormClosedEventArgs e)
+        {
+            Common.CloseMantraConnection();
+            Application.Exit();
+
         }
     }
 }

@@ -33,6 +33,7 @@
             this.registerUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.attendanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.getReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userRegistrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -54,7 +55,8 @@
             this.homeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registerUsersToolStripMenuItem,
             this.attendanceToolStripMenuItem,
-            this.getReportsToolStripMenuItem});
+            this.getReportsToolStripMenuItem,
+            this.closeToolStripMenuItem});
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
             this.homeToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.homeToolStripMenuItem.Text = "Home";
@@ -62,23 +64,30 @@
             // registerUsersToolStripMenuItem
             // 
             this.registerUsersToolStripMenuItem.Name = "registerUsersToolStripMenuItem";
-            this.registerUsersToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.registerUsersToolStripMenuItem.Text = "Register Users";
+            this.registerUsersToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.registerUsersToolStripMenuItem.Text = "Register Employee";
             this.registerUsersToolStripMenuItem.Click += new System.EventHandler(this.registerUsersToolStripMenuItem_Click);
             // 
             // attendanceToolStripMenuItem
             // 
             this.attendanceToolStripMenuItem.Name = "attendanceToolStripMenuItem";
-            this.attendanceToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.attendanceToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.attendanceToolStripMenuItem.Text = "Attendance ";
             this.attendanceToolStripMenuItem.Click += new System.EventHandler(this.attendanceToolStripMenuItem_Click);
             // 
             // getReportsToolStripMenuItem
             // 
             this.getReportsToolStripMenuItem.Name = "getReportsToolStripMenuItem";
-            this.getReportsToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.getReportsToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.getReportsToolStripMenuItem.Text = "Get Reports";
             this.getReportsToolStripMenuItem.Click += new System.EventHandler(this.getReportsToolStripMenuItem_Click);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // managementsToolStripMenuItem
             // 
@@ -99,6 +108,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Attendance_Master.Properties.Resources.Fig1;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(551, 331);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
@@ -106,6 +117,7 @@
             this.Name = "MDDI";
             this.Text = "Home";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MDDI_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -122,6 +134,7 @@
         private System.Windows.Forms.ToolStripMenuItem getReportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem managementsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userRegistrationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
 
     }
 }

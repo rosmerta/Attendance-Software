@@ -56,4 +56,3 @@ D:\Rozmerta  Project\Attendance-Software\INI\bin\Debug\INI.dll
 D:\Rozmerta  Project\Attendance-Software\INI\bin\Debug\INI.pdb
 D:\Rozmerta  Project\Attendance-Software\INI\obj\Debug\INI.dll
 D:\Rozmerta  Project\Attendance-Software\INI\obj\Debug\INI.pdb
-D:\Rozmerta  Project\Attendance-Software\INI\obj\Debug\INI.csprojResolveAssemblyReference.cache

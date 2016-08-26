@@ -18,16 +18,18 @@ namespace BAL
 {
     public class Common
     {
-       public enum IsSuccess { Sucess, NoSuccess };
-       public enum InDatabaseInsertData { Zero, One, Two };
-       public const string Success = "Success";
-       public const string SomeError = "SomeError";
-       public const int Quentity = 60;
-       public const int MatchThreshold = 14000;
-       public const int Timer = 0;
-       public enum LoginStatus { Correct,NameANDPasswordValidDateNOValid,EveryThingWrong }
+        public enum IsSuccess { Sucess, NoSuccess };
+        public enum InDatabaseInsertData { Zero, One, Two };
+        public static bool IsPunchMasterCallClosedButton = false;
 
-       public enum UserRoles { Admin, Users, SuperAdmin };
+        public const string Success = "Success";
+        public const string SomeError = "SomeError";
+        public const int Quentity = 60;
+        public const int MatchThreshold = 14000;
+        public const int Timer = 0;
+        public enum LoginStatus { Correct, NameANDPasswordValidDateNOValid, EveryThingWrong }
+
+        public enum UserRoles { Admin, Users, SuperAdmin };
 
         /// <summary>
         /// Developer Joginder Singh
@@ -37,7 +39,25 @@ namespace BAL
         /// <param name="encodedServername"></param>
         /// <returns></returns>
         /// 
-        public const int DataInsertSuccessfully =0, IsValidateFinger=0, Zero=0,IsSameFinger=0;
+
+        public static void CloseMantraConnection()
+        {
+            try
+            {
+                MantraStopWorking ObjImageAndPunchMaster = new MantraStopWorking();
+
+                ObjImageAndPunchMaster.StopCapture();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+        public const int DataInsertSuccessfully = 0, IsValidateFinger = 0, Zero = 0, IsSameFinger = 0;
         /// <summary>
         /// Create a bitmap from raw data in row/column format.
         /// </summary>
@@ -65,7 +85,7 @@ namespace BAL
             return bmp;
         }
 
-       
+
         public static string Decode(string StringValue)
         {
             try
@@ -939,7 +959,7 @@ namespace BAL
         }
         public static string FilePath(SaveFileDialog saveDialog)
         {
-           
+
             string FileName = string.Empty;
             saveDialog.InitialDirectory = @"D:\";
             saveDialog.Title = "Save text Files";

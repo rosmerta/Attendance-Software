@@ -40,6 +40,8 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.LblName = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.LblStatus = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,16 +54,15 @@
             this.btnCapture = new System.Windows.Forms.Button();
             this.BtnSave = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.BtnClose = new System.Windows.Forms.Button();
             this.BtnReSet = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.LblStatus = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThridFinger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SecondFinger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstFinger)).BeginInit();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // button2
@@ -108,6 +109,7 @@
             // 
             // CmbOffice
             // 
+            this.CmbOffice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbOffice.FormattingEnabled = true;
             this.CmbOffice.Location = new System.Drawing.Point(191, 129);
             this.CmbOffice.Name = "CmbOffice";
@@ -212,6 +214,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Image";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.LblStatus);
+            this.groupBox4.Location = new System.Drawing.Point(12, 562);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(669, 48);
+            this.groupBox4.TabIndex = 12;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Status";
+            // 
+            // LblStatus
+            // 
+            this.LblStatus.AutoSize = true;
+            this.LblStatus.Location = new System.Drawing.Point(179, 16);
+            this.LblStatus.Name = "LblStatus";
+            this.LblStatus.Size = new System.Drawing.Size(0, 13);
+            this.LblStatus.TabIndex = 0;
+            // 
             // label6
             // 
             this.label6.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -220,7 +240,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(190, 25);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Thrid Finger";
+            this.label6.Text = "Third Finger";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -321,7 +341,7 @@
             // 
             this.BtnSave.BackColor = System.Drawing.Color.Green;
             this.BtnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSave.Location = new System.Drawing.Point(571, 19);
+            this.BtnSave.Location = new System.Drawing.Point(341, 19);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(209, 48);
             this.BtnSave.TabIndex = 8;
@@ -331,6 +351,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.BtnClose);
             this.groupBox3.Controls.Add(this.BtnReSet);
             this.groupBox3.Controls.Add(this.BtnSave);
             this.groupBox3.Location = new System.Drawing.Point(12, 628);
@@ -340,36 +361,29 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Action ";
             // 
+            // BtnClose
+            // 
+            this.BtnClose.BackColor = System.Drawing.Color.Salmon;
+            this.BtnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnClose.Location = new System.Drawing.Point(873, 20);
+            this.BtnClose.Name = "BtnClose";
+            this.BtnClose.Size = new System.Drawing.Size(209, 48);
+            this.BtnClose.TabIndex = 10;
+            this.BtnClose.Text = "Close";
+            this.BtnClose.UseVisualStyleBackColor = false;
+            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
             // BtnReSet
             // 
             this.BtnReSet.BackColor = System.Drawing.Color.Salmon;
             this.BtnReSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnReSet.Location = new System.Drawing.Point(857, 19);
+            this.BtnReSet.Location = new System.Drawing.Point(614, 19);
             this.BtnReSet.Name = "BtnReSet";
             this.BtnReSet.Size = new System.Drawing.Size(209, 48);
             this.BtnReSet.TabIndex = 9;
             this.BtnReSet.Text = "Reset";
             this.BtnReSet.UseVisualStyleBackColor = false;
             this.BtnReSet.Click += new System.EventHandler(this.BtnReSet_Click);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.LblStatus);
-            this.groupBox4.Location = new System.Drawing.Point(12, 562);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(669, 48);
-            this.groupBox4.TabIndex = 12;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Status";
-            // 
-            // LblStatus
-            // 
-            this.LblStatus.AutoSize = true;
-            this.LblStatus.Location = new System.Drawing.Point(179, 16);
-            this.LblStatus.Name = "LblStatus";
-            this.LblStatus.Size = new System.Drawing.Size(37, 13);
-            this.LblStatus.TabIndex = 0;
-            this.LblStatus.Text = "Status";
             // 
             // FormRegisterUser
             // 
@@ -382,17 +396,17 @@
             this.HelpButton = true;
             this.Name = "FormRegisterUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Register User";
+            this.Text = "Employee Register Home";
             this.Load += new System.EventHandler(this.RegisterUser_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThridFinger)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SecondFinger)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstFinger)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -427,6 +441,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label LblStatus;
+        private System.Windows.Forms.Button BtnClose;
     }
 }
 

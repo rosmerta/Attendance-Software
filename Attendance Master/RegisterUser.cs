@@ -96,13 +96,8 @@ namespace Attendance_Master
       
         private void RegisterUser_Load(object sender, EventArgs e)
         {
-
             try
             {
-               
-
-              
-
                 BindCameraList();
                 if (CmbCamra.SelectedIndex > 0)
                 {
@@ -111,11 +106,7 @@ namespace Attendance_Master
 
 
                 BindImage(FirstFinger);
-
-
-
-               
-                
+                BindOfficeList();
                 //FaceRecognition ObjFaceRecoginition = new FaceRecognition();
                 //ObjFaceRecoginition.GetCameraName(ref CameraName);
             }
@@ -149,20 +140,34 @@ namespace Attendance_Master
             #endregion
         }
 
+        private void BindOfficeList()
+        {
+
+            Dictionary<int, string> Values = new Dictionary<int, string>();
+            Values.Add(0, "--Select Office--");
+            foreach (DataRow dr in Common.ReturnDataTableBasedOnStoreProcedure("GetOfficeList").Rows)
+            {
+                int key = Convert.ToInt32(dr["UID"]);
+                string value = dr["OfficeName"].ToString();
+                Values.Add(key, value);
+            }
+
+
+            CmbOffice.DataSource = Values.ToList();
+            CmbOffice.ValueMember = "Key";
+            CmbOffice.DisplayMember = "Value";
+          
+        }
+
+
+        
        private void BindImage(PictureBox pictruebox)
         {
             MantraFingerScanner ObjFingerScanner = new MantraFingerScanner();
             ObjFingerScanner.MantraConnection(ref LblStatus, Common.Quentity, ref pictruebox,false);
             ObjFingerScanner._SecondPictureBox = SecondFinger;
             ObjFingerScanner._ThirdPicturebox = ThridFinger;
-
-            
-
         }
-
-   
-      
-
         public void BindCameraList()
         {
             Dictionary<int, string> objDic = new Dictionary<int, string>();
@@ -243,7 +248,7 @@ namespace Attendance_Master
                 if (_strFirstFinger != null && _strSecondFinger != null && _strThridFinger != null && img != null)
                 {
                     Register ObjRegister = new Register();
-                    int IsSuccessInsertData = ObjRegister.InsertDataForRegisterUser(txtEmployeeId.Text.Trim(), txtName.Text.Trim(), txtAddress.Text.Trim(), "1", 1, imageToByteArray(img), _strFirstFinger, _strSecondFinger, _strThridFinger);
+                    int IsSuccessInsertData = ObjRegister.InsertDataForRegisterUser(txtEmployeeId.Text.Trim(), txtName.Text.Trim(), txtAddress.Text.Trim(),Convert.ToString(CmbOffice.SelectedValue), 1, imageToByteArray(img), _strFirstFinger, _strSecondFinger, _strThridFinger);
                     if (IsSuccessInsertData > Common.DataInsertSuccessfully)
                     {
                         BtnReSet_Click(sender, e);
@@ -256,24 +261,35 @@ namespace Attendance_Master
         }
         public void ValidateControls(ref bool isValidate, ref string errorstring)
         {
-            if (!Common.ValidateStringValue(txtName.Text))
+            if (!Common.ValidateStringValue(txtName.Text.Trim()))
             {
                 errorstring = "Please Enter Name";
                 isValidate = false;
                 return;
             }
-            if (!Common.ValidateStringValue(txtEmployeeId.Text))
-            {
-                errorstring = "Please Enter Employee ID ";
-                isValidate = false;
-                return;
-            }
-            if (!Common.ValidateStringValue(txtAddress.Text))
+          
+            if (!Common.ValidateStringValue(txtAddress.Text.Trim()))
             {
                 errorstring = "Please Enter Address";
                 isValidate = false;
                 return;
             }
+
+            if(CmbOffice.Text=="--Select Office--")
+            {
+                errorstring = "Please Select Valid Office";
+                isValidate = false;
+                return;
+
+
+            }
+            if (!Common.ValidateStringValue(txtEmployeeId.Text.Trim()))
+            {
+                errorstring = "Please Enter Employee ID ";
+                isValidate = false;
+                return;
+            }
+
         }
         private void btnCapture_Click(object sender, EventArgs e)
         {
@@ -765,6 +781,15 @@ namespace Attendance_Master
             }
         }
         #endregion
+
+       
         #endregion
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+           
+            Common.CloseMantraConnection();
+            this.Close();
+        }
     }
 }
