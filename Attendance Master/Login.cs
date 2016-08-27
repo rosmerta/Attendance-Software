@@ -29,11 +29,9 @@ namespace Attendance_Master
                 // 0 means everything is correct
                 // 1 Means userName and Passwrod is Correct but date not Valid.
                 // 2 means Everything is wrong. 
-
                 string CheckValue = objUser.CheckUserCredential(txtUsername.Text, txtPassword.Text).ToString();
                 if (Convert.ToInt32(CheckValue.Split('\\')[1]) == (int)Common.LoginStatus.Correct)
                 {
-
                     LoggedInUser.userName = txtUsername.Text;
                     DateTime loginDateTime = DateTime.Now;
                     LoggedInUser.computerName = Environment.MachineName;
@@ -44,18 +42,16 @@ namespace Attendance_Master
                         if (Common.UserRoles.Admin.ToString() != UserType)
                         {
                             this.Hide();
-                            MDDI_Users mdi = new MDDI_Users();
-                            mdi.Show();
+                            MDDI mdi = new MDDI();
+                            mdi.Show();                           
                         }
                         else
                         {
-
                             this.Hide();
-                            MDDI mdi = new MDDI();
-                            mdi.Show();
+                            MDDI_Users mdi = new MDDI_Users();
+                            mdi.Show();                         
                         }
                     }
-
                 }
                 //else if (CheckValue == 1)
                 else if (Convert.ToInt32(CheckValue.Split('\\')[1]) == (int)Common.LoginStatus.NameANDPasswordValidDateNOValid)

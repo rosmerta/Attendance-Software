@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -19,9 +18,7 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -275,7 +272,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Punch Master";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-         
             this.Load += new System.EventHandler(this.PunchMaster_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PicEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstFinger)).EndInit();
@@ -283,11 +279,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
-
         #endregion
-
         private System.Windows.Forms.PictureBox PicEmployee;
         private System.Windows.Forms.PictureBox FirstFinger;
         private System.Windows.Forms.GroupBox groupBox1;

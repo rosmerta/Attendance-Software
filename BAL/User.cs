@@ -39,7 +39,6 @@ namespace BAL
                     ObjCommand.Parameters.Add(SqlParameters);
                     ObjCommand.Parameters.Add(password);
                     ReturnValue = DMLSql.MYInstance.GetSingleRecord(ObjCommand, CommandType.StoredProcedure).Rows[0]["TempValue"].ToString();
-                   
                 }
             }
             catch (Exception)

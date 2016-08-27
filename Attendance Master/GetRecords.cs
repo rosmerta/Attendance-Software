@@ -57,12 +57,9 @@ namespace Attendance_Master
             else
                 return;
         }
-
         // Save Dailog Open and set the File name...
-
         private void SaveFileName(ref string fileName)
         {
-
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.InitialDirectory = @"C:\";
             saveFileDialog1.Title = "Save text Files";
@@ -72,7 +69,6 @@ namespace Attendance_Master
             saveFileDialog1.Filter = "Excel files (*.xls)|*.xls";
             saveFileDialog1.FilterIndex = 2;
             saveFileDialog1.RestoreDirectory = true;
-           
             if (saveFileDialog1.ShowDialog() != DialogResult.OK)
             {
                 Common.MessageBoxInformation("Please add Name of File Before the export file");
@@ -80,12 +76,9 @@ namespace Attendance_Master
             }
             else
             fileName = saveFileDialog1.FileName;
-
         }
-
         public void SetWorkbookDetails(ref Workbook book)
         {
-           
             // Specify which Sheet should be opened and the size of window by default
             book.ExcelWorkbook.ActiveSheetIndex = 1;
             book.ExcelWorkbook.WindowTopX = 100;
@@ -119,10 +112,7 @@ namespace Attendance_Master
             style.Interior.Color = "White";
             //style.Interior.Pattern = StyleInteriorPattern.DiagCross;
             // Add a Worksheet with some data
-        
         }
-
-
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             if (Convert.ToInt32(cmbEmployeeName.SelectedValue) == Common.Zero)
@@ -146,27 +136,18 @@ namespace Attendance_Master
                     //Get Records based On EmployeeID..
                     int EmployeeID = Convert.ToInt32(GetEmployeeRecords.Rows[Employee]["Name"].ToString().Split('(')[1].Split(')')[0]);
                     GetRecords = ObjRegister.GetRecordsAttendanceLog(EmployeeID, Convert.ToDateTime(dtFrom.Text));
-
-                  
-
                     //Opne save Dailog File...
                     SaveFileName(ref FileName);
                     if (string.IsNullOrEmpty(FileName))
                         return;
-
                     //Add a workbook
-
                     CarlosAg.ExcelXmlWriter.Workbook book = new CarlosAg.ExcelXmlWriter.Workbook();
                     SetWorkbookDetails(ref book);
-
-
                     Worksheet sheet = book.Worksheets.Add(Common.ConvertMonth(Convert.ToDateTime(dtFrom.Text).ToShortDateString()));          
                     WorksheetRow TitleRows = sheet.Table.Rows.Add();
                     TitleRows.Index = IndexIncrement();
                     TitleRows.Height = 26;
                     TitleRows.AutoFitHeight = true;
-
-                   
                     bool AddEmptyCell = false;
                     for (int i = 1; i <= Obj.Columns.Count/2; i++)
                     {
@@ -181,14 +162,9 @@ namespace Attendance_Master
                             TitleRows.Cells.Add(wcHeader);
                         }
                     }
-
-
                     //Add row with some properties
-
                     WorksheetRow Status = null;
                      WorksheetRow TotalReports=null;
-                 
-                 
                     int Persent = 0, WeekOff = 0, MISPunch = 0, Abbsent = 0;
                     for (int day = 1; day <= Obj.Columns.Count; day++)
                     {
@@ -198,7 +174,6 @@ namespace Attendance_Master
                         row.AutoFitHeight = true;
                         bool Intime1 = false, Intime2 = false, Intime3 = false, Intime4 = false;
                         bool Empty = false, Empty1 = false, Empty2 = false, Empty3 = false, isMIS = false, INOUTStatus = true;
-                      
                         if (!AddEmptyCell)
                         {
                             WorksheetCell EmptyCell = new WorksheetCell("DAY", "HeaderStyle");
@@ -209,9 +184,7 @@ namespace Attendance_Master
                                 row.Cells.Add(wcHeader);
                             }
                             AddEmptyCell = true;
-
                             int INOUTCountNumber = 0;
-
                             for (int inoutHeader = 1; inoutHeader <=  (Convert.ToInt32(GetRecords.Rows[0]["CountNoRow"])/2==0?Convert.ToInt32(GetRecords.Rows[0]["CountNoRow"]):Convert.ToInt32(GetRecords.Rows[0]["CountNoRow"])+1); inoutHeader++)
                             {
                                if(INOUTStatus)
@@ -235,10 +208,7 @@ namespace Attendance_Master
                                     intime2.Cells.Add(Out);
                                     INOUTStatus = true;
                                 }
-                                
                             }
-                           
-
                             Status = sheet.Table.Rows.Add();
                             Status.Index = IndexIncrement();
                             Status.Height = 26;
@@ -247,7 +217,6 @@ namespace Attendance_Master
                             TotalReports.Index = IndexIncrement();
                             TotalReports.Height = 26;
                             TotalReports.AutoFitHeight = true;                      
-                          
                             WorksheetCell StatusHeader = new WorksheetCell("Status", "HeaderStyle");
                             Status.Cells.Add(StatusHeader);
                             WorksheetCell StatusTotal = new WorksheetCell("Reports", "HeaderStyle");
@@ -258,7 +227,6 @@ namespace Attendance_Master
                                 TotalReports.Cells.Add(ReporstStatus);
                             }
                         }
-                       
                         int CountNumber = 0;
                         bool IsPersent = false;
                         for (int j = 0; j < GetRecords.Rows.Count; j++)

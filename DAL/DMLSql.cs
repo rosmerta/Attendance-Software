@@ -13,11 +13,8 @@ namespace DAL
     {
         private static SqlDataAdapter myAdapter;
         private static DMLSql Instance = null;
-
         private DMLSql() { }
         private static object lockThis = new object();
-
-
         private static SqlConnection conn;
         private static string DatabaseName = string.Empty;
         private static string UserID = string.Empty;
@@ -28,13 +25,9 @@ namespace DAL
         {
             get
             {
-
                 try
                 {       if (Instance == null)
                         {
-
-
-
                             Instance = new DMLSql();
                             myAdapter = new SqlDataAdapter();
                             ReadINIFile objReadINIFile = new ReadINIFile(@"D:\a-master.ini");
@@ -47,18 +40,12 @@ namespace DAL
                             conn = new SqlConnection(TempConnectionstring);
                         }
                         return Instance;
-                    
-
                 }
                 catch (Exception)
                 {
-                    
                     throw;
                 }
-
-
             }
-            
         }
         // Open Database Connection if Closed or Broken
         private SqlConnection openConnection()
@@ -78,7 +65,6 @@ namespace DAL
             }
             return conn;
         }
-
         /// <summary>
         /// Get A Single Records 
         /// </summary>
@@ -87,21 +73,13 @@ namespace DAL
         /// <returns></returns>
         public DataTable GetSingleRecord(SqlCommand Cmd, CommandType commandType)
         {
-
             string Result = string.Empty;
             DataTable dt = new DataTable();
             try
             {
-
-
                 Cmd.Connection = openConnection();
                 Cmd.CommandType = commandType;
                 dt.Load(Cmd.ExecuteReader());
-
-
-
-
-
             }
             catch (SqlException)
             {
@@ -113,7 +91,6 @@ namespace DAL
                 CloseConnection();
             }
             return dt;
-
         }
         // Insert data through Text/Procedure with sql parameters
         public int ExecuteNonquery(string query, SqlParameter[] sqlParameter, CommandType commandType)

@@ -4,17 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MANTRA;
-
 namespace BAL
 {
-   
-
     public class MFS:MFS100
     {
         public static MFS instance = null;
         private MFS() { }
         private static object lockThis = new object();
-
         public static MFS GInstance
         {
             get
@@ -23,7 +19,6 @@ namespace BAL
                 {
                     if (instance == null)
                         instance = new MFS();
-
                     return instance;
                 }
             }

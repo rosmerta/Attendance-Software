@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Attendance_Master
 {
     public partial class MDDI_Users : Form
@@ -16,16 +15,11 @@ namespace Attendance_Master
         {
             InitializeComponent();
         }
-
-       
-     
         private void getReportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GetRecords ObjGetRecords = new GetRecords();
             ObjGetRecords.IsMdiContainer = true;
             ObjGetRecords.Show();
         }
-
-       
     }
 }

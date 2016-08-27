@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
@@ -21,16 +22,14 @@ namespace BAL
         public enum IsSuccess { Sucess, NoSuccess };
         public enum InDatabaseInsertData { Zero, One, Two };
         public static bool IsPunchMasterCallClosedButton = false;
-
         public const string Success = "Success";
         public const string SomeError = "SomeError";
         public const int Quentity = 60;
         public const int MatchThreshold = 14000;
         public const int Timer = 0;
         public enum LoginStatus { Correct, NameANDPasswordValidDateNOValid, EveryThingWrong }
-
         public enum UserRoles { Admin, Users, SuperAdmin };
-
+        public const int DataInsertSuccessfully = 0, IsValidateFinger = 0, Zero = 0, IsSameFinger = 0;
         /// <summary>
         /// Developer Joginder Singh
         /// Dated : 17-12-2015
@@ -39,13 +38,11 @@ namespace BAL
         /// <param name="encodedServername"></param>
         /// <returns></returns>
         /// 
-
         public static void CloseMantraConnection()
         {
             try
             {
                 MantraStopWorking ObjImageAndPunchMaster = new MantraStopWorking();
-
                 ObjImageAndPunchMaster.StopCapture();
             }
             catch(Exception ex)
@@ -57,7 +54,8 @@ namespace BAL
                 GC.Collect();
             }
         }
-        public const int DataInsertSuccessfully = 0, IsValidateFinger = 0, Zero = 0, IsSameFinger = 0;
+      
+      
         /// <summary>
         /// Create a bitmap from raw data in row/column format.
         /// </summary>
@@ -84,8 +82,6 @@ namespace BAL
             bmp.UnlockBits(data);
             return bmp;
         }
-
-
         public static string Decode(string StringValue)
         {
             try
@@ -954,12 +950,10 @@ namespace BAL
         }
         public static DataTable ReturnDataTableBasedOnStoreProcedure(string stroeProcedureName)
         {
-
             return DMLSql.MYInstance.GetRecords(stroeProcedureName, CommandType.StoredProcedure);
         }
         public static string FilePath(SaveFileDialog saveDialog)
         {
-
             string FileName = string.Empty;
             saveDialog.InitialDirectory = @"D:\";
             saveDialog.Title = "Save text Files";

@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="CLSMFS100.cs" />
     <Compile Include="ComareImageAndPunchMaster.cs" />
+    <Compile Include="ExcetionClass.cs" />
     <Compile Include="GetRecords.cs" />
     <Compile Include="CommanCLS.cs" />
     <Compile Include="Common.cs" />

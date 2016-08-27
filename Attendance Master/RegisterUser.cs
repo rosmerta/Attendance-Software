@@ -15,7 +15,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BAL;
 using System.IO;
-
 namespace Attendance_Master
 {
     public partial class FormRegisterUser : Form
@@ -65,14 +64,7 @@ namespace Attendance_Master
         private Fmd _firstFinger;
         private Fmd _secondFinger;
         private Fmd _ThridFinger;
-
-
-        
         #endregion
-
-
-
-
         public FormRegisterUser()
         {
             InitializeComponent();
@@ -92,8 +84,6 @@ namespace Attendance_Master
             }
         }
         int Quentity = 0;
-       
-      
         private void RegisterUser_Load(object sender, EventArgs e)
         {
             try
@@ -103,8 +93,6 @@ namespace Attendance_Master
                 {
                     ActivateCamra();
                 }
-
-
                 BindImage(FirstFinger);
                 BindOfficeList();
                 //FaceRecognition ObjFaceRecoginition = new FaceRecognition();
@@ -114,9 +102,6 @@ namespace Attendance_Master
             {
                 Common.MessageBoxError(ex.ToString());
             }
-
-
-
             #region Finger Scanner
             //if (FingerCaptrueReaderName == string.Empty)
             //{
@@ -139,10 +124,8 @@ namespace Attendance_Master
             //}
             #endregion
         }
-
         private void BindOfficeList()
         {
-
             Dictionary<int, string> Values = new Dictionary<int, string>();
             Values.Add(0, "--Select Office--");
             foreach (DataRow dr in Common.ReturnDataTableBasedOnStoreProcedure("GetOfficeList").Rows)
@@ -151,16 +134,10 @@ namespace Attendance_Master
                 string value = dr["OfficeName"].ToString();
                 Values.Add(key, value);
             }
-
-
             CmbOffice.DataSource = Values.ToList();
             CmbOffice.ValueMember = "Key";
             CmbOffice.DisplayMember = "Value";
-          
         }
-
-
-        
        private void BindImage(PictureBox pictruebox)
         {
             MantraFingerScanner ObjFingerScanner = new MantraFingerScanner();
@@ -230,14 +207,12 @@ namespace Attendance_Master
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
-
          if(ThridFinger.Image!=null)
          {
              _strFirstFinger = MantraFingerScanner._FirstImageData;
              _strSecondFinger = MantraFingerScanner._SecondImageData;
              _strThridFinger = MantraFingerScanner._ThridImageData;
          }
-
             bool Isvalidate = true;
             string errorStringValue = string.Empty;
             ValidateControls(ref Isvalidate, ref errorStringValue);
@@ -267,21 +242,17 @@ namespace Attendance_Master
                 isValidate = false;
                 return;
             }
-          
             if (!Common.ValidateStringValue(txtAddress.Text.Trim()))
             {
                 errorstring = "Please Enter Address";
                 isValidate = false;
                 return;
             }
-
             if(CmbOffice.Text=="--Select Office--")
             {
                 errorstring = "Please Select Valid Office";
                 isValidate = false;
                 return;
-
-
             }
             if (!Common.ValidateStringValue(txtEmployeeId.Text.Trim()))
             {
@@ -289,7 +260,6 @@ namespace Attendance_Master
                 isValidate = false;
                 return;
             }
-
         }
         private void btnCapture_Click(object sender, EventArgs e)
         {
@@ -381,9 +351,6 @@ namespace Attendance_Master
                 txtEmployeeId.Focus();
             }
         }
-
-
-       
         #region Not in Use...
         private void GetReaderList()
         {
@@ -462,26 +429,17 @@ namespace Attendance_Master
                 {
                     // Create a new device source. We use the first audio and video devices on the system
                     _deviceSource = _job.AddDeviceSource(video, audio);
-
                     _deviceSource.PickBestVideoFormat(new Size(300, 200), 20);
-
                     // }
                     // Get the properties of the device video
                     SourceProperties sp = _deviceSource.SourcePropertiesSnapshot();
-
                     // Resize the preview panel to match the video device resolution set
                     panelVideoPreview.Size = new Size(sp.Size.Width, sp.Size.Height);
-
                     // Setup the output video resolution file as the preview
                     _job.OutputFormat.VideoProfile.Size = new Size(sp.Size.Width, sp.Size.Height);
-
                     // Display the video device properties set
                     //toolStrip1.Text = sp.Size.Width.ToString() + "x" + sp.Size.Height.ToString() + "  " + sp.FrameRate.ToString() + " fps";
                     // Sets preview window to winform panel hosted by xaml window
-
-
-
-
                     _deviceSource.PreviewWindow = new PreviewWindow(new HandleRef(panelVideoPreview, panelVideoPreview.Handle));
                     // Make this source the active one
                     _job.ActivateSource(_deviceSource);
@@ -498,7 +456,6 @@ namespace Attendance_Master
             }
             catch (Exception)
             {
-                
                 throw;
             }
         }
@@ -781,13 +738,9 @@ namespace Attendance_Master
             }
         }
         #endregion
-
-       
         #endregion
-
         private void BtnClose_Click(object sender, EventArgs e)
         {
-           
             Common.CloseMantraConnection();
             this.Close();
         }

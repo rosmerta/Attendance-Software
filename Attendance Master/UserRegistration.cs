@@ -11,14 +11,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using BAL;
-
 namespace Attendance_Master
 {
     public partial class UserRegistration : Form
     {
         User objUser = null;
         DataTable dt = null;
-
         string errors;
         Boolean status;
         public UserRegistration()
@@ -40,10 +38,7 @@ namespace Attendance_Master
                 }
                 else
                 {
-
-
                     errors = Common.fieldValidation(txtName.Text, txtUserName.Text, txtPassword.Text, txtConfirmPassword.Text, CmbUserType.SelectedIndex, dtpDateValidFrom.Text, dtpDateValidTill.Text);
-
                     status = objUser.UserNameExist(txtUserName.Text);
                     if (status)
                     {
@@ -66,35 +61,26 @@ namespace Attendance_Master
                         return;
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 WriteErrorLog.ErrorLog(ex);
-              
             }   
         }
-
         private void btnReset_Click(object sender, EventArgs e)
         {
             Reset();
         }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            
-
-        
         }
-
         private void Reset()
         {
             //To Reset all fields and refresh gridview
-
             try
             {
                 txtName.Focus();
@@ -111,26 +97,21 @@ namespace Attendance_Master
                 WriteErrorLog.ErrorLog(ex);
             }
         }
-
         public DataTable GetDataUser_Mast()
         {
             DataTable objDatatable = new DataTable();
-
             try
             {
                 objUser = new User();
                 dt = new DataTable();
                 objDatatable = objUser.GetDataForUser();
-              
             }
             catch (Exception ex)
             {
                 WriteErrorLog.ErrorLog(ex);
             }
             return objDatatable;
-
         }
-
         public void refresh()
         {
             try
@@ -148,12 +129,9 @@ namespace Attendance_Master
                 WriteErrorLog.ErrorLog(ex);
             }
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
         }
-
         private void UserRegistration_Load(object sender, EventArgs e)
         {
             Dictionary<int, string> ObjDic = new Dictionary<int, string>();
@@ -162,7 +140,6 @@ namespace Attendance_Master
             CmbUserType.DataSource = ObjDic.ToList();
             CmbUserType.ValueMember = "Key";
             CmbUserType.DisplayMember = "Value";
-
         }
     }
 }

@@ -22,21 +22,17 @@ namespace BAL
         Label _LblStatus = null;
         Label _LblEmployeeId = null;
         Label _LblEmployeeName = null;
-
         #endregion
         public void CompareImage(byte[] attachedFingerdata, byte[] DataAttachedFingerData)
         {
-
             try
             {
                 MFS.GInstance.MatchANSI(attachedFingerdata, DataAttachedFingerData, ref ImagesValidateScore);
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
         List<byte[]> ListByteArray = null;
         public string ReturnWelcomeMessage()
@@ -60,7 +56,6 @@ namespace BAL
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -76,18 +71,14 @@ namespace BAL
                 if (CompleteDataForValidateRecords == null)
                 {
                     ObjRegister = new Register();
-
                     CompleteDataForValidateRecords = ObjRegister.GetRecordsBasedOnThumbExpression();
                 }
-
                 Task TT = Task.Run(() =>
                 {
-
                     if (CompleteDataForValidateRecords.Rows.Count > Common.Zero)
                     {
                         int TempRowsCount = CompleteDataForValidateRecords.Rows.Count;
                         bool UserRecordsMatch = false;
-
                         for (int i = 0; i < TempRowsCount ; i++)
                         {
                             ListByteArray = new List<byte[]>();
@@ -98,7 +89,6 @@ namespace BAL
                             ListByteArray.Add(FirstImageByte);
                             ListByteArray.Add(SecondImageByte);
                             ListByteArray.Add(ThridImageByte);
-                           
                             foreach (Byte[] FingerData in ListByteArray)
                             {
                                 CompareImage(_FingerImageData, FingerData);
@@ -122,17 +112,13 @@ namespace BAL
                                         _LblStatus.Text = ReturnWelcomeMessage() + _LblEmployeeName.Text;
                                         _LblStatus.ForeColor = Color.Green;                                      
                                         System.Threading.Thread.Sleep(2000);
-                                        
                                     }
                                     i = TempRowsCount;
                                     break;
-                                   
                                 }
-                               
                             }
                             // MFS.GInstance.StartCapture(Common.Quentity, Common.Timer, false);
                         }
-
                         if(!UserRecordsMatch)
                         {
                             MFS.GInstance.StartCapture(Common.Quentity, Common.Timer, true);
@@ -142,17 +128,14 @@ namespace BAL
                             _LblStatus.Text = "Please Try again";
                             _LblStatus.ForeColor = Color.Red;
                         }
-                        
                     }
                     else
                         Common.MessageBoxInformation("No Records Found plz Contact to admin");
                 });
                 TT.Wait();
-
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
@@ -160,8 +143,5 @@ namespace BAL
                 GC.Collect();
             }
         }
-
-       
-
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace BAL
 {
    public class LoggedInUser
@@ -22,7 +21,5 @@ namespace BAL
         public static string Password { get; set; }
         public static string CurrentDirectory { get; set; }
         public static string DSNName { get; set; }
-
     }
-
 }

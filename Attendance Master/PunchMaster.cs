@@ -15,7 +15,6 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.Net;
 using Newtonsoft.Json;
-
 namespace Attendance_Master
 {
     public partial class PunchMaster : Form
@@ -38,7 +37,6 @@ namespace Attendance_Master
             MantraFingerScanner ObjFingerScanner = new MantraFingerScanner();
                 ObjFingerScanner.MantraConnection(ref lblStatus, Common.Quentity, ref picturebox, true, PicEmployee, lblEmployeeName, lblEmployeeId);
             lblStatus.Text = "Put your finger on Finger Scanner";
-
         }
         /// <summary>
         /// Open a device and check result for errors.
@@ -49,16 +47,10 @@ namespace Attendance_Master
             digitalDisplayControl1.DigitText = DateTime.Now.ToString("HH:mm:ss");
             lblDate.Text = DateTime.Now.ToString("dd-MM-yyyy");
         }
-
-     
-
         private void BtnClose_Click(object sender, EventArgs e)
         {
-          
                    Common.CloseMantraConnection();
                    this.Close();
-           
         }
-        
     }
 }
