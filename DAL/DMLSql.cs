@@ -16,10 +16,16 @@ namespace DAL
         private DMLSql() { }
         private static object lockThis = new object();
         private static SqlConnection conn;
+        private static SqlConnection localConnection;
         private static string DatabaseName = string.Empty;
         private static string UserID = string.Empty;
         private static string Password = string.Empty;
         private static string ServerName = string.Empty;
+        //Local connection details
+        private static string localDatabaseName = string.Empty;
+        private static string localUserID = string.Empty;
+        private static string localPassword = string.Empty;
+        private static string localServerName = string.Empty;
         // Initialise Connection
         public static DMLSql MYInstance
         {
@@ -36,8 +42,14 @@ namespace DAL
                             UserID = objReadINIFile.GetSetting("UserName", "UserName");
                             Password = objReadINIFile.GetSetting("Password", "Password");
                             ServerName = objReadINIFile.GetSetting("ServerName", "ServerName");
+                            localDatabaseName = objReadINIFile.GetSetting("localDatabaseName", "localDatabaseName");
+                            localUserID = objReadINIFile.GetSetting("localUserName", "localUserName");
+                            localPassword = objReadINIFile.GetSetting("localPassword", "localPassword");
+                            localServerName = objReadINIFile.GetSetting("localServerName", "localServerName");
+                            string LocalconncetionString = @"Data Source=" + localServerName + ";Database=" + localDatabaseName + ";User ID=" + localUserID + ";Password=" + localPassword + ";";
                             string TempConnectionstring = @"Data Source=" + ServerName + ";Database=" + DatabaseName + ";User ID=" + UserID + ";Password=" + Password + ";";
                             conn = new SqlConnection(TempConnectionstring);
+                            localConnection = new SqlConnection(LocalconncetionString);
                         }
                         return Instance;
                 }
@@ -48,22 +60,31 @@ namespace DAL
             }
         }
         // Open Database Connection if Closed or Broken
-        private SqlConnection openConnection()
+        private SqlConnection openConnection(bool isLocalConnection)
         {
-            if (conn.State == ConnectionState.Closed || conn.State == ConnectionState.Broken)
-            {
-                conn.Open();
-            }
-            return conn;
+            SqlConnection Connection = null;
+            if (isLocalConnection)
+                Connection = localConnection; 
+            else
+                Connection = conn;
+            if (Connection.State == ConnectionState.Closed || Connection.State == ConnectionState.Broken)
+                Connection.Open();
+            return Connection;
         }
         // Close Connection....
-        private SqlConnection CloseConnection()
+        private SqlConnection CloseConnection(bool isLocalConnection)
         {
-            if (conn.State == ConnectionState.Open || conn.State == ConnectionState.Broken)
+            SqlConnection Connection = null;
+            if (isLocalConnection)
+                Connection = localConnection;
+            else
+                Connection = conn;
+
+            if (Connection.State == ConnectionState.Open || Connection.State == ConnectionState.Broken)
             {
-                conn.Close();
+                Connection.Close();
             }
-            return conn;
+            return Connection;
         }
         /// <summary>
         /// Get A Single Records 
@@ -71,35 +92,35 @@ namespace DAL
         /// <param name="Cmd" Sql Command ></param>
         /// <param name="commandType" Pass Paramerters and Depand on Requirements></param>
         /// <returns></returns>
-        public DataTable GetSingleRecord(SqlCommand Cmd, CommandType commandType)
+        public DataTable GetSingleRecord(SqlCommand Cmd, CommandType commandType, bool isLocal = false)
         {
             string Result = string.Empty;
             DataTable dt = new DataTable();
             try
             {
-                Cmd.Connection = openConnection();
+                Cmd.Connection = openConnection(isLocal);
                 Cmd.CommandType = commandType;
                 dt.Load(Cmd.ExecuteReader());
             }
             catch (SqlException)
             {
-                CloseConnection();
+                CloseConnection(isLocal);
                 throw;
             }
             finally
             {
-                CloseConnection();
+                CloseConnection(isLocal);
             }
             return dt;
         }
         // Insert data through Text/Procedure with sql parameters
-        public int ExecuteNonquery(string query, SqlParameter[] sqlParameter, CommandType commandType)
+        public int ExecuteNonquery(string query, SqlParameter[] sqlParameter, CommandType commandType,bool isLocal=false)
         {
             int TempValue = 0;
             SqlCommand sqlCommand = new SqlCommand();
             try
             {
-                sqlCommand.Connection = openConnection();
+                sqlCommand.Connection = openConnection(isLocal);
                 sqlCommand.CommandText = query;
                 sqlCommand.CommandType = commandType;
                 if (sqlParameter != null)
@@ -108,42 +129,42 @@ namespace DAL
             }
             catch (SqlException ex)
             {
-                CloseConnection();
+                CloseConnection(isLocal);
                 throw ex;
             }
             finally
             {
-                CloseConnection();
+                CloseConnection(isLocal);
             }
             return TempValue;
         }
-        public int ExecuteNonquery(SqlCommand cmd)
+        public int ExecuteNonquery(SqlCommand cmd, bool isLocal = false)
         {
             int TempValue = 0;
             try
             {
-                cmd.Connection = openConnection();
+                cmd.Connection = openConnection(isLocal);
                 TempValue = cmd.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
-                CloseConnection();
+                CloseConnection(isLocal);
                 throw ex;
             }
             finally
             {
-                CloseConnection();
+                CloseConnection(isLocal);
             }
             return TempValue;
         }
         // To get Single Record with passing parameters
-        public string GetSingleRecord(string query, SqlParameter[] sqlParameter, CommandType commandType)
+        public string GetSingleRecord(string query, SqlParameter[] sqlParameter, CommandType commandType, bool isLocal = false)
         {
             string TempValue = string.Empty;
             SqlCommand sqlCommand = new SqlCommand();
             try
             {
-                sqlCommand.Connection = openConnection();
+                sqlCommand.Connection = openConnection(isLocal);
                 sqlCommand.CommandText = query;
                 sqlCommand.CommandType = commandType;
                 if (sqlParameter != null)
@@ -152,67 +173,67 @@ namespace DAL
             }
             catch (SqlException ex)
             {
-                CloseConnection();
+                CloseConnection(isLocal);
                 throw ex;
             }
             finally
             {
-                CloseConnection();
+                CloseConnection(isLocal);
             }
             return TempValue;
         }
         // To get Single Record without passing parameters
-        public string GetSingleRecord(string query, CommandType commandType)
+        public string GetSingleRecord(string query, CommandType commandType, bool isLocal = false)
         {
             string TempValue = string.Empty;
             SqlCommand sqlCommand = new SqlCommand();
             try
             {
-                sqlCommand.Connection = openConnection();
+                sqlCommand.Connection = openConnection(isLocal);
                 sqlCommand.CommandText = query;
                 sqlCommand.CommandType = commandType;
                 TempValue = Convert.ToString(sqlCommand.ExecuteScalar());
             }
             catch (SqlException ex)
             {
-                CloseConnection();
+                CloseConnection(isLocal);
                 throw ex;
             }
             finally
             {
-                CloseConnection();
+                CloseConnection(isLocal);
             }
             return TempValue;
         }
         // To get Single Record without passing parameters
-        public string GetSingleRecord(SqlCommand cmd)
+        public string GetSingleRecord(SqlCommand cmd, bool isLocal = false)
         {
             string TempValue = string.Empty;
             try
             {
-                cmd.Connection = openConnection();
+                cmd.Connection = openConnection(isLocal);
                 TempValue = Convert.ToString(cmd.ExecuteScalar());
             }
             catch (SqlException ex)
             {
-                CloseConnection();
+                CloseConnection(isLocal);
                 throw ex;
             }
             finally
             {
-                CloseConnection();
+                CloseConnection(isLocal);
             }
             return TempValue;
         }
         // To get multiple records with passing parameters
-        public DataTable GetRecords(string query, SqlParameter[] sqlParameter, CommandType commandType)
+        public DataTable GetRecords(string query, SqlParameter[] sqlParameter, CommandType commandType, bool isLocal = false)
         {
             SqlCommand sqlCommand = new SqlCommand();
             DataTable records = null;
             try
             {
                 records = new DataTable();
-                sqlCommand.Connection = openConnection();
+                sqlCommand.Connection = openConnection(isLocal);
                 sqlCommand.CommandText = query;
                 sqlCommand.CommandType = commandType;
                 if (sqlParameter != null)
@@ -221,61 +242,61 @@ namespace DAL
             }
             catch (SqlException ex)
             {
-                CloseConnection();
+                CloseConnection(isLocal);
                 throw ex;
             }
             finally
             {
-                CloseConnection();
+                CloseConnection(isLocal);
             }
             return records;
         }
-        public DataTable GetRecords(SqlCommand cmd)
+        public DataTable GetRecords(SqlCommand cmd, bool isLocal = false)
         {
             DataTable records = null;
             try
             {
                 records = new DataTable();
-                cmd.Connection = openConnection();
+                cmd.Connection = openConnection(isLocal);
                 records.Load(cmd.ExecuteReader());
             }
             catch (SqlException ex)
             {
-                CloseConnection();
+                CloseConnection(isLocal);
                 throw ex;
             }
             finally
             {
-                CloseConnection();
+                CloseConnection(isLocal);
             }
             return records;
         }
         // To get multiple records without passing parameters
-        public DataTable GetRecords(string query, CommandType commandType)
+        public DataTable GetRecords(string query, CommandType commandType, bool isLocal = false)
         {
             SqlCommand sqlCommand = new SqlCommand();
             DataTable records = null;
             try
             {
                 records = new DataTable();
-                sqlCommand.Connection = openConnection();
+                sqlCommand.Connection = openConnection(isLocal);
                 sqlCommand.CommandText = query;
                 sqlCommand.CommandType = commandType;
                 records.Load(sqlCommand.ExecuteReader());
             }
             catch (SqlException ex)
             {
-                CloseConnection();
+                CloseConnection(isLocal);
                 throw ex;
             }
             catch (Exception ex)
             {
-                CloseConnection();
+                CloseConnection(isLocal);
                 throw ex;
             }
             finally
             {
-                CloseConnection();
+                CloseConnection(isLocal);
             }
             return records;
         }

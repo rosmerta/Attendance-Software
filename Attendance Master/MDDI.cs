@@ -25,18 +25,20 @@ namespace Attendance_Master
         private void attendanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PunchMaster ObjPunchMaster = new PunchMaster();
+            ObjPunchMaster.MdiParent = this;
             ObjPunchMaster.Show();
+           
         }
         private void getReportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GetRecords ObjGetRecords = new GetRecords();
-            ObjGetRecords.IsMdiContainer = true;
+            ObjGetRecords.MdiParent = this;
             ObjGetRecords.Show();
         }
         private void userRegistrationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UserRegistration ObjUserRegistration = new UserRegistration();
-            ObjUserRegistration.IsMdiContainer = true;
+            ObjUserRegistration.MdiParent = this;
             ObjUserRegistration.Show();
         }
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,6 +50,14 @@ namespace Attendance_Master
         {
             Common.CloseMantraConnection();
             Application.Exit();
+        }
+
+        private void officeListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegisterOffice ObjRegisterOffice = new RegisterOffice();
+            ObjRegisterOffice.MdiParent = this;
+            ObjRegisterOffice.Show();
+
         }
     }
 }

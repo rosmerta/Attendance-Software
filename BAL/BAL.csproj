@@ -53,6 +53,7 @@
     <Compile Include="GetRecords.cs" />
     <Compile Include="CommanCLS.cs" />
     <Compile Include="Common.cs" />
+    <Compile Include="LocalConditionRecords.cs" />
     <Compile Include="LoggedInUser.cs" />
     <Compile Include="MantraFingerScanner.cs" />
     <Compile Include="MantraStopWorking.cs" />

@@ -4,12 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace BAL
 {
     public static class ExcetionClass
     {
-          public static void CheckForInternetConnection(this bool IsActive)
+          public static bool CheckForInternetConnection(this bool IsActive)
         {
             try
             {
@@ -25,6 +24,7 @@ namespace BAL
             {
                 IsActive= false;
             }
+            return IsActive;
         }
     }
 }

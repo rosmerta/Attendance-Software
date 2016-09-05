@@ -33,6 +33,7 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userRegistrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.officeListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +90,8 @@
             // managementsToolStripMenuItem
             // 
             this.managementsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userRegistrationToolStripMenuItem});
+            this.userRegistrationToolStripMenuItem,
+            this.officeListToolStripMenuItem});
             this.managementsToolStripMenuItem.Name = "managementsToolStripMenuItem";
             this.managementsToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.managementsToolStripMenuItem.Text = "Managements";
@@ -100,6 +102,13 @@
             this.userRegistrationToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.userRegistrationToolStripMenuItem.Text = "User Registration";
             this.userRegistrationToolStripMenuItem.Click += new System.EventHandler(this.userRegistrationToolStripMenuItem_Click);
+            // 
+            // officeListToolStripMenuItem
+            // 
+            this.officeListToolStripMenuItem.Name = "officeListToolStripMenuItem";
+            this.officeListToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.officeListToolStripMenuItem.Text = "Office List";
+            this.officeListToolStripMenuItem.Click += new System.EventHandler(this.officeListToolStripMenuItem_Click);
             // 
             // MDDI
             // 
@@ -119,6 +128,7 @@
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -129,5 +139,6 @@
         private System.Windows.Forms.ToolStripMenuItem managementsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userRegistrationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem officeListToolStripMenuItem;
     }
 }

@@ -1,6 +1,4 @@
 ﻿using DPUruNet;
-using Microsoft.Expression.Encoder.Devices;
-using Microsoft.Expression.Encoder.Live;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,12 +18,8 @@ namespace Attendance_Master
     public partial class FormRegisterUser : Form
     {
         #region Global Variable
-        private LiveDeviceSource _deviceSource;
-        private string _PathofFile;
-        private LiveJob _job;
         private ReaderCollection _readers;
         private string FingerCaptrueReaderName = string.Empty;
-        private bool _bStartedRecording = false;
         private Image _FirstImage = null;
         private Image _SecondImage = null;
         private Image _ThridImage = null;
@@ -83,20 +77,15 @@ namespace Attendance_Master
                 throw;
             }
         }
-        int Quentity = 0;
         private void RegisterUser_Load(object sender, EventArgs e)
         {
             try
             {
-                BindCameraList();
-                if (CmbCamra.SelectedIndex > 0)
-                {
-                    ActivateCamra();
-                }
                 BindImage(FirstFinger);
                 BindOfficeList();
                 //FaceRecognition ObjFaceRecoginition = new FaceRecognition();
                 //ObjFaceRecoginition.GetCameraName(ref CameraName);
+                this.ControlBox = false;
             }
             catch (Exception ex)
             {
@@ -141,69 +130,9 @@ namespace Attendance_Master
        private void BindImage(PictureBox pictruebox)
         {
             MantraFingerScanner ObjFingerScanner = new MantraFingerScanner();
-            ObjFingerScanner.MantraConnection(ref LblStatus, Common.Quentity, ref pictruebox,false);
+            ObjFingerScanner.MantraConnection(ref LblStatus, false,ref pictruebox);
             ObjFingerScanner._SecondPictureBox = SecondFinger;
             ObjFingerScanner._ThirdPicturebox = ThridFinger;
-        }
-        public void BindCameraList()
-        {
-            Dictionary<int, string> objDic = new Dictionary<int, string>();
-            int i = 0;
-            objDic.Add(i, "--Please Select Camra--");
-            i += 1;
-            foreach (EncoderDevice edv in EncoderDevices.FindDevices(EncoderDeviceType.Video))
-            {
-                objDic.Add(i, edv.Name);
-                i += 1;
-            }
-            CmbCamra.DataSource = objDic.ToList();
-            CmbCamra.ValueMember = "key";
-            CmbCamra.DisplayMember = "Value";
-        }
-        private void GetSelectedVideoAndAudioDevices(out EncoderDevice video)
-        {
-            video = null;
-            if (CmbCamra.SelectedIndex < 0)
-            {
-                MessageBox.Show("No Video and Audio capture devices have been selected.\nSelect an audio and video devices from the listboxes and try again.", "Warning");
-                return;
-            }
-            // Get the selected video device            
-            foreach (EncoderDevice edv in EncoderDevices.FindDevices(EncoderDeviceType.Video))
-            {
-                if (CmbCamra.Text == edv.Name)
-                {
-                    video = edv;
-                    //lblVideoDeviceSelectedForPreview.Text = edv.Name;
-                    break;
-                }
-            }
-            //// Get the selected audio device            
-            //foreach (EncoderDevice eda in EncoderDevices.FindDevices(EncoderDeviceType.Audio))
-            //{
-            //    if (String.Compare(eda.Name, lstAudioDevices.SelectedItem.ToString()) == 0)
-            //    {
-            //        audio = eda;
-            //        lblAudioDeviceSelectedForPreview.Text = eda.Name;
-            //        break;
-            //    }
-            //}
-        }
-        private void CmbCamra_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-        private void btnPreview_Click(object sender, EventArgs e)
-        {
-            if (CmbCamra.SelectedIndex > 0)
-            {
-                btnPreview.Text = "Please wait ";
-                ActivateCamra();
-                btnPreview.Text = "Preview";
-            }
-            else
-            {
-                MessageBox.Show("Please Select Camera First...");
-            }
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -218,13 +147,11 @@ namespace Attendance_Master
             ValidateControls(ref Isvalidate, ref errorStringValue);
             if (Isvalidate)
             {
-                string PathOfFile = (Environment.CurrentDirectory + "\\Images\\");
-                Image img = Image.FromFile(PathOfFile + txtName.Text + txtEmployeeId.Text + ".jpg");
-                if (_strFirstFinger != null && _strSecondFinger != null && _strThridFinger != null && img != null)
+                if (_strFirstFinger != null && _strSecondFinger != null && _strThridFinger != null)
                 {
                     Register ObjRegister = new Register();
-                    int IsSuccessInsertData = ObjRegister.InsertDataForRegisterUser(txtEmployeeId.Text.Trim(), txtName.Text.Trim(), txtAddress.Text.Trim(),Convert.ToString(CmbOffice.SelectedValue), 1, imageToByteArray(img), _strFirstFinger, _strSecondFinger, _strThridFinger);
-                    if (IsSuccessInsertData > Common.DataInsertSuccessfully)
+                    string IsSuccessInsertData = ObjRegister.InsertDataForRegisterUser(txtEmployeeId.Text.Trim(), txtName.Text.Trim(), txtAddress.Text.Trim(),Convert.ToString(CmbOffice.SelectedValue), 1, _strFirstFinger, _strSecondFinger, _strThridFinger);
+                    if (IsSuccessInsertData == Convert.ToString( Common.IsSuccess.Sucess))
                     {
                         BtnReSet_Click(sender, e);
                         Common.MessageBoxInformation("Your Data successfully inserted");
@@ -261,42 +188,6 @@ namespace Attendance_Master
                 return;
             }
         }
-        private void btnCapture_Click(object sender, EventArgs e)
-        {
-            bool Isvalidate = true;
-            string errorStringValue = string.Empty;
-            ValidateControls(ref Isvalidate, ref errorStringValue);
-            if (Isvalidate)
-            {
-                string strGrabFileName = string.Empty;
-                using (Bitmap bitmap = new Bitmap(panelVideoPreview.Width, panelVideoPreview.Height))
-                {
-                    using (Graphics g = Graphics.FromImage(bitmap))
-                    {
-                        // Get the paramters to call g.CopyFromScreen and get the image
-                        Rectangle rectanglePanelVideoPreview = panelVideoPreview.Bounds;
-                        CommanCLS OBJ = new CommanCLS();
-                        OBJ.NameOfApplicant = txtName.Text;
-                        OBJ.RegistrationId = txtEmployeeId.Text;
-                        Point sourcePoints = panelVideoPreview.PointToScreen(new Point(panelVideoPreview.ClientRectangle.X, panelVideoPreview.ClientRectangle.Y));
-                        g.CopyFromScreen(sourcePoints, Point.Empty, rectanglePanelVideoPreview.Size);
-                        PointF firstLocation = new PointF(0, 0);
-                        using (Font arialFont = new Font("Arial", 10))
-                        {
-                            g.DrawString(OBJ.RegistrationId, arialFont, Brushes.White, firstLocation);
-                        }
-                        strGrabFileName = @Environment.CurrentDirectory + "\\Images\\" + OBJ.NameOfApplicant + OBJ.RegistrationId + ".jpg";
-                        _PathofFile = strGrabFileName;
-                        StopJob();
-                    }
-                    bitmap.Save(strGrabFileName, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    panelVideoPreview.BackgroundImage = LoadBitmap(strGrabFileName);
-                    bitmap.Dispose();
-                }
-            }
-            else
-                Common.MessageBoxError(errorStringValue);
-        }
         public static Bitmap LoadBitmap(string path)
         {
             //Open file in read only mode
@@ -332,7 +223,6 @@ namespace Attendance_Master
             FirstFinger.Image = null;
             SecondFinger.Image = null;
             ThridFinger.Image = null;
-            panelVideoPreview.BackgroundImage = null;
             txtName.Text = string.Empty;
             txtAddress.Text = string.Empty;
             txtEmployeeId.Text = string.Empty;
@@ -365,32 +255,7 @@ namespace Attendance_Master
                 MessageBox.Show("No Reader Found!!!");
             }
         }
-        void StopJob()
-        {
-            // Has the Job already been created ?
-            if (_job != null)
-            {
-                // Yes
-                // Is it capturing ?
-                //if (_job.IsCapturing)
-                if (_bStartedRecording)
-                {
-                    // Yes
-                    // Stop Capturing
-                    // btnStartStopRecording.PerformClick();
-                }
-                _job.StopEncoding();
-                // Remove the Device Source and destroy the job
-                if (_deviceSource != null)
-                {
-                    _job.RemoveDeviceSource(_deviceSource);
-                    // Destroy the device source
-                    _deviceSource.PreviewWindow = null;
-                }
-                _deviceSource = null;
-            }
-        }
-        /// <summary>
+           /// <summary>
         /// Open a device and check result for errors.
         /// </summary>
         /// <returns>Returns true if successful; false if unsuccessful</returns>
@@ -409,55 +274,6 @@ namespace Attendance_Master
                 return false;
             }
             return true;
-        }
-        private void ActivateCamra()
-        {
-            try
-            {
-                EncoderDevice video = null;
-                EncoderDevice audio = null;
-                GetSelectedVideoAndAudioDevices(out video);
-                StopJob();
-                if (video == null)
-                {
-                    return;
-                }
-                // Starts new job for preview window
-                _job = new LiveJob();
-                // Checks for a/v devices
-                if (video != null)
-                {
-                    // Create a new device source. We use the first audio and video devices on the system
-                    _deviceSource = _job.AddDeviceSource(video, audio);
-                    _deviceSource.PickBestVideoFormat(new Size(300, 200), 20);
-                    // }
-                    // Get the properties of the device video
-                    SourceProperties sp = _deviceSource.SourcePropertiesSnapshot();
-                    // Resize the preview panel to match the video device resolution set
-                    panelVideoPreview.Size = new Size(sp.Size.Width, sp.Size.Height);
-                    // Setup the output video resolution file as the preview
-                    _job.OutputFormat.VideoProfile.Size = new Size(sp.Size.Width, sp.Size.Height);
-                    // Display the video device properties set
-                    //toolStrip1.Text = sp.Size.Width.ToString() + "x" + sp.Size.Height.ToString() + "  " + sp.FrameRate.ToString() + " fps";
-                    // Sets preview window to winform panel hosted by xaml window
-                    _deviceSource.PreviewWindow = new PreviewWindow(new HandleRef(panelVideoPreview, panelVideoPreview.Handle));
-                    // Make this source the active one
-                    _job.ActivateSource(_deviceSource);
-                    // btnStartStopRecording.Enabled = true;
-                    //btnImagePreview.Enabled = true;
-                    //toolStrip1.Text = "Preview activated";
-                }
-                else
-                {
-                    // Gives error message as no audio and/or video devices found
-                    MessageBox.Show("No Video/Audio capture devices have been found.", "Warning");
-                    //toolStrip1.Text = "No Video/Audio capture devices have been found.";
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
         }
         /// <summary>
         /// Close window.

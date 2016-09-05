@@ -190,5 +190,42 @@ namespace BAL
                 throw;
             }
         }
+        public int ResetPasswordBasedonUserNameAndName(string userName, string name)
+        {
+            try
+            {
+                oraCommand = new SqlCommand();
+                //query to insert user logout details
+                string Query = "ResetPasswordBasedonUserNameAndName";
+                SqlParameter[] sqlParameter = {
+                new SqlParameter("@UserName", userName),
+            new SqlParameter("@Name", name),
+                                              new SqlParameter("@Password", Common.Encrypt((userName.Trim()+name.Trim()),"rosmerta"))
+                                              };
+                return DMLSql.MYInstance.ExecuteNonquery(Query, sqlParameter, CommandType.StoredProcedure);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public string DeleteUserNameRecords(string userName, string name)
+        {
+            try
+            {
+                oraCommand = new SqlCommand();
+                //query to insert user logout details
+                string Query = "DeleteUserNameRecords";
+                SqlParameter[] sqlParameter = {
+                new SqlParameter("@UserName", userName),
+            new SqlParameter("@Name", name),                                             
+                                              };
+                return DMLSql.MYInstance.GetSingleRecord(Query, sqlParameter, CommandType.StoredProcedure);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

@@ -42,13 +42,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnPreview = new System.Windows.Forms.Button();
-            this.CmbCamra = new System.Windows.Forms.ComboBox();
-            this.panelVideoPreview = new System.Windows.Forms.Panel();
             this.ThridFinger = new System.Windows.Forms.PictureBox();
             this.SecondFinger = new System.Windows.Forms.PictureBox();
             this.FirstFinger = new System.Windows.Forms.PictureBox();
-            this.btnCapture = new System.Windows.Forms.Button();
             this.BtnSave = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BtnClose = new System.Windows.Forms.Button();
@@ -99,7 +95,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(475, 584);
+            this.groupBox1.Size = new System.Drawing.Size(475, 319);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Personal Information";
@@ -196,17 +192,13 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.btnPreview);
-            this.groupBox2.Controls.Add(this.CmbCamra);
-            this.groupBox2.Controls.Add(this.panelVideoPreview);
             this.groupBox2.Controls.Add(this.ThridFinger);
             this.groupBox2.Controls.Add(this.SecondFinger);
             this.groupBox2.Controls.Add(this.FirstFinger);
-            this.groupBox2.Controls.Add(this.btnCapture);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.groupBox2.Location = new System.Drawing.Point(493, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(687, 616);
+            this.groupBox2.Size = new System.Drawing.Size(626, 319);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Image";
@@ -214,7 +206,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.LblStatus);
-            this.groupBox4.Location = new System.Drawing.Point(12, 562);
+            this.groupBox4.Location = new System.Drawing.Point(22, 253);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(669, 48);
             this.groupBox4.TabIndex = 12;
@@ -233,7 +225,7 @@
             // 
             this.label6.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(411, 524);
+            this.label6.Location = new System.Drawing.Point(421, 215);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(190, 25);
             this.label6.TabIndex = 11;
@@ -244,7 +236,7 @@
             // 
             this.label5.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(212, 523);
+            this.label5.Location = new System.Drawing.Point(222, 214);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(193, 26);
             this.label5.TabIndex = 10;
@@ -255,49 +247,17 @@
             // 
             this.label4.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(9, 523);
+            this.label4.Location = new System.Drawing.Point(19, 214);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(190, 26);
             this.label4.TabIndex = 9;
             this.label4.Text = "First Finger";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnPreview
-            // 
-            this.btnPreview.BackColor = System.Drawing.Color.DarkGray;
-            this.btnPreview.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPreview.ForeColor = System.Drawing.Color.DarkCyan;
-            this.btnPreview.Location = new System.Drawing.Point(63, 123);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(246, 39);
-            this.btnPreview.TabIndex = 6;
-            this.btnPreview.Text = "Preview";
-            this.btnPreview.UseVisualStyleBackColor = false;
-            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
-            // 
-            // CmbCamra
-            // 
-            this.CmbCamra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbCamra.FormattingEnabled = true;
-            this.CmbCamra.Location = new System.Drawing.Point(63, 58);
-            this.CmbCamra.Name = "CmbCamra";
-            this.CmbCamra.Size = new System.Drawing.Size(246, 21);
-            this.CmbCamra.TabIndex = 5;
-            this.CmbCamra.SelectedIndexChanged += new System.EventHandler(this.CmbCamra_SelectedIndexChanged);
-            // 
-            // panelVideoPreview
-            // 
-            this.panelVideoPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelVideoPreview.Location = new System.Drawing.Point(354, 58);
-            this.panelVideoPreview.MaximumSize = new System.Drawing.Size(327, 252);
-            this.panelVideoPreview.Name = "panelVideoPreview";
-            this.panelVideoPreview.Size = new System.Drawing.Size(327, 252);
-            this.panelVideoPreview.TabIndex = 8;
-            // 
             // ThridFinger
             // 
             this.ThridFinger.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ThridFinger.Location = new System.Drawing.Point(411, 332);
+            this.ThridFinger.Location = new System.Drawing.Point(421, 23);
             this.ThridFinger.Name = "ThridFinger";
             this.ThridFinger.Size = new System.Drawing.Size(190, 188);
             this.ThridFinger.TabIndex = 7;
@@ -306,7 +266,7 @@
             // SecondFinger
             // 
             this.SecondFinger.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SecondFinger.Location = new System.Drawing.Point(215, 332);
+            this.SecondFinger.Location = new System.Drawing.Point(225, 23);
             this.SecondFinger.Name = "SecondFinger";
             this.SecondFinger.Size = new System.Drawing.Size(190, 188);
             this.SecondFinger.TabIndex = 6;
@@ -315,30 +275,17 @@
             // FirstFinger
             // 
             this.FirstFinger.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FirstFinger.Location = new System.Drawing.Point(9, 332);
+            this.FirstFinger.Location = new System.Drawing.Point(19, 23);
             this.FirstFinger.Name = "FirstFinger";
             this.FirstFinger.Size = new System.Drawing.Size(190, 188);
             this.FirstFinger.TabIndex = 5;
             this.FirstFinger.TabStop = false;
             // 
-            // btnCapture
-            // 
-            this.btnCapture.BackColor = System.Drawing.Color.DarkGray;
-            this.btnCapture.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapture.ForeColor = System.Drawing.Color.DarkCyan;
-            this.btnCapture.Location = new System.Drawing.Point(63, 213);
-            this.btnCapture.Name = "btnCapture";
-            this.btnCapture.Size = new System.Drawing.Size(246, 39);
-            this.btnCapture.TabIndex = 7;
-            this.btnCapture.Text = "Capture";
-            this.btnCapture.UseVisualStyleBackColor = false;
-            this.btnCapture.Click += new System.EventHandler(this.btnCapture_Click);
-            // 
             // BtnSave
             // 
             this.BtnSave.BackColor = System.Drawing.Color.Green;
             this.BtnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSave.Location = new System.Drawing.Point(341, 19);
+            this.BtnSave.Location = new System.Drawing.Point(216, 19);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(209, 48);
             this.BtnSave.TabIndex = 8;
@@ -351,9 +298,9 @@
             this.groupBox3.Controls.Add(this.BtnClose);
             this.groupBox3.Controls.Add(this.BtnReSet);
             this.groupBox3.Controls.Add(this.BtnSave);
-            this.groupBox3.Location = new System.Drawing.Point(12, 628);
+            this.groupBox3.Location = new System.Drawing.Point(12, 347);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1162, 74);
+            this.groupBox3.Size = new System.Drawing.Size(1107, 74);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Action ";
@@ -362,7 +309,7 @@
             // 
             this.BtnClose.BackColor = System.Drawing.Color.Salmon;
             this.BtnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnClose.Location = new System.Drawing.Point(873, 20);
+            this.BtnClose.Location = new System.Drawing.Point(748, 20);
             this.BtnClose.Name = "BtnClose";
             this.BtnClose.Size = new System.Drawing.Size(209, 48);
             this.BtnClose.TabIndex = 10;
@@ -374,7 +321,7 @@
             // 
             this.BtnReSet.BackColor = System.Drawing.Color.Salmon;
             this.BtnReSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnReSet.Location = new System.Drawing.Point(614, 19);
+            this.BtnReSet.Location = new System.Drawing.Point(489, 19);
             this.BtnReSet.Name = "BtnReSet";
             this.BtnReSet.Size = new System.Drawing.Size(209, 48);
             this.BtnReSet.TabIndex = 9;
@@ -386,7 +333,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1202, 714);
+            this.ClientSize = new System.Drawing.Size(1127, 437);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -419,13 +366,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnCapture;
         private System.Windows.Forms.PictureBox ThridFinger;
         private System.Windows.Forms.PictureBox SecondFinger;
         private System.Windows.Forms.PictureBox FirstFinger;
-        private System.Windows.Forms.Panel panelVideoPreview;
-        private System.Windows.Forms.ComboBox CmbCamra;
-        private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.Button BtnSave;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button BtnReSet;
@@ -437,4 +380,3 @@
         private System.Windows.Forms.Button BtnClose;
     }
 }
-

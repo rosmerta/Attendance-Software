@@ -1,5 +1,7 @@
 ﻿using BAL;
 using System;
+using System.Data;
+using System.Threading;
 using System.Windows.Forms;
 namespace Attendance_Master
 {
@@ -9,6 +11,10 @@ namespace Attendance_Master
         public Login()
         {
             InitializeComponent();
+
+        
+
+
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -39,17 +45,28 @@ namespace Attendance_Master
                     string UserType = objUser.GetUserType(Convert.ToInt32(CheckValue.Split('\\')[0]));
                     if (objUser.InsertLoginDetails(LoggedInUser.userName, loginDateTime, LoggedInUser.computerName, LoggedInUser.loginStatus))
                     {
-                        if (Common.UserRoles.Admin.ToString() != UserType)
+                        if (Common.UserRoles.Admin.ToString() == UserType)
                         {
                             this.Hide();
                             MDDI mdi = new MDDI();
-                            mdi.Show();                           
+                            mdi.Show();
+                            return;
+                        }
+                        if (Common.UserRoles.SuperUsers.ToString() == UserType)
+                        {
+                            this.Hide();
+                            MDDI_SUPERUSERS ObjMDDISuperUsers = new MDDI_SUPERUSERS();
+                           
+                            ObjMDDISuperUsers.Show();
+                            return;
+
                         }
                         else
                         {
                             this.Hide();
                             MDDI_Users mdi = new MDDI_Users();
-                            mdi.Show();                         
+                            mdi.Show();
+                            return;
                         }
                     }
                 }
@@ -121,15 +138,37 @@ namespace Attendance_Master
         {
             try
             {
-                this.MaximizeBox = false;
-                User objUser = new User();
-                //Check users Data Connection Successfully or Not ...
-                // Created By Joginder Singh 
-                objUser.GetConnect_Staus();
+
+               
+                   this.MaximizeBox = false;
+                   User objUser = new User();
+                   //Check users Data Connection Successfully or Not ...
+                   // Created By Joginder Singh 
+                   objUser.GetConnect_Staus();
+                   System.Windows.Forms.Timer _Timer = new System.Windows.Forms.Timer();
+                   _Timer.Enabled = true;
+                   _Timer.Start();
+                   _Timer.Interval = 7200000;
+                   _Timer.Tick += _Timer_Tick;
+               
+                // makes the main thread sleep - let sub thread to run
             }
             catch (Exception ex)
             {
                 WriteErrorLog.ErrorLog(ex);
+            }
+        }
+        void _Timer_Tick(object sender, EventArgs e)
+        {
+            Thread _thread = new Thread(DataSysncOnServer);
+            _thread.Start();
+            _thread.IsBackground = true;
+        }
+        public static void DataSysncOnServer()
+        {
+            bool IsConnect = false;
+            if (IsConnect.CheckForInternetConnection())
+            {
             }
         }
     }

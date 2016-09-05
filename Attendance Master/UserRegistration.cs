@@ -38,7 +38,7 @@ namespace Attendance_Master
                 }
                 else
                 {
-                    errors = Common.fieldValidation(txtName.Text, txtUserName.Text, txtPassword.Text, txtConfirmPassword.Text, CmbUserType.SelectedIndex, dtpDateValidFrom.Text, dtpDateValidTill.Text);
+                    errors = Common.fieldValidation(txtName.Text, txtUserName.Text, txtPassword.Text, txtConfirmPassword.Text,Convert.ToInt32(CmbUserType.SelectedValue), dtpDateValidFrom.Text, dtpDateValidTill.Text);
                     status = objUser.UserNameExist(txtUserName.Text);
                     if (status)
                     {
@@ -46,7 +46,7 @@ namespace Attendance_Master
                     }
                     if (string.IsNullOrEmpty(errors))
                     {
-                        if (objUser.InsertDataForUser(txtName.Text, txtUserName.Text, Common.Encrypt(txtPassword.Text, "rosmerta"), CmbUserType.SelectedIndex, dtpDateValidFrom.Text, dtpDateValidTill.Text))
+                        if (objUser.InsertDataForUser(txtName.Text, txtUserName.Text, Common.Encrypt(txtPassword.Text, "rosmerta"),Convert.ToInt32( CmbUserType.SelectedValue), dtpDateValidFrom.Text, dtpDateValidTill.Text))
                         {
                             refresh();
                             Reset();
@@ -65,7 +65,7 @@ namespace Attendance_Master
             catch (Exception ex)
             {
                 WriteErrorLog.ErrorLog(ex);
-            }   
+            }
         }
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -77,6 +77,12 @@ namespace Attendance_Master
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[0].Value) == true)
+                {
+                }
+            }
         }
         private void Reset()
         {
@@ -131,15 +137,58 @@ namespace Attendance_Master
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[0].Value) == true)
+                {
+                    string UserName = string.Empty;
+                    string Name = string.Empty;
+                    Name = Convert.ToString(row.Cells["NAME"].Value);
+                    UserName = Convert.ToString(row.Cells["USERNAME"].Value);
+                    User ObjUser = new User();
+                    if (objUser.DeleteUserNameRecords(UserName, Name) == Convert.ToString( Common.IsSuccess.Sucess))
+                    {
+                        Common.MessageBoxInformation("Your Request Done");
+                    }
+                    else
+                    {
+                        Common.MessageBoxError("Something Wrong when trying to delete records ");
+                    }
+                }
+            }
         }
         private void UserRegistration_Load(object sender, EventArgs e)
         {
             Dictionary<int, string> ObjDic = new Dictionary<int, string>();
-            ObjDic.Add(1, "Admin");
-            ObjDic.Add(2, "Suprevisor");
+            foreach (DataRow Rows in  Common.ReturnDataTableBasedOnStoreProcedure("GetUserTypeName").Rows)
+            {
+                ObjDic.Add(Convert.ToInt32(Rows["UID"].ToString()), Rows["User_Type"].ToString());
+            };         
             CmbUserType.DataSource = ObjDic.ToList();
             CmbUserType.ValueMember = "Key";
             CmbUserType.DisplayMember = "Value";
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[0].Value) == true)
+                {
+                    string UserName = string.Empty;
+                    string Name = string.Empty;
+                    Name = Convert.ToString(row.Cells["NAME"].Value);
+                    UserName = Convert.ToString(row.Cells["USERNAME"].Value);
+                    User ObjUser = new User();
+                    if (objUser.ResetPasswordBasedonUserNameAndName(UserName, Name) > Common.Zero)
+                    {
+                        Common.MessageBoxInformation("Your Request Done");
+                    }
+                    else
+                    {
+                        Common.MessageBoxError("Something Wrong when trying to update password or Reset");
+                    }
+                }
+            }
         }
     }
 }

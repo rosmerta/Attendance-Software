@@ -27,6 +27,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserRegistration));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnResertPassword = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -56,6 +57,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnResertPassword);
             this.groupBox2.Controls.Add(this.btnDelete);
             this.groupBox2.Controls.Add(this.btnUpdate);
             this.groupBox2.Controls.Add(this.btnClose);
@@ -66,14 +68,25 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Action";
             // 
+            // btnResertPassword
+            // 
+            this.btnResertPassword.BackColor = System.Drawing.Color.Tomato;
+            this.btnResertPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResertPassword.Location = new System.Drawing.Point(745, 19);
+            this.btnResertPassword.Name = "btnResertPassword";
+            this.btnResertPassword.Size = new System.Drawing.Size(152, 40);
+            this.btnResertPassword.TabIndex = 41;
+            this.btnResertPassword.Text = "Password Reset";
+            this.btnResertPassword.UseVisualStyleBackColor = false;
+            this.btnResertPassword.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.Tomato;
-            this.btnDelete.Enabled = false;
             this.btnDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(497, 27);
+            this.btnDelete.Location = new System.Drawing.Point(462, 19);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(117, 32);
+            this.btnDelete.Size = new System.Drawing.Size(117, 40);
             this.btnDelete.TabIndex = 40;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -82,11 +95,10 @@
             // btnUpdate
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnUpdate.Enabled = false;
             this.btnUpdate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(187, 27);
+            this.btnUpdate.Location = new System.Drawing.Point(187, 19);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(117, 32);
+            this.btnUpdate.Size = new System.Drawing.Size(117, 40);
             this.btnUpdate.TabIndex = 39;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -98,7 +110,7 @@
             this.btnClose.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(1110, 19);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(117, 32);
+            this.btnClose.Size = new System.Drawing.Size(117, 40);
             this.btnClose.TabIndex = 11;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -315,7 +327,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1257, 636);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);
@@ -332,6 +344,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+
         }
         #endregion
         private System.Windows.Forms.GroupBox groupBox2;
@@ -357,5 +370,6 @@
         private System.Windows.Forms.DateTimePicker dtpDateValidFrom;
         private System.Windows.Forms.ComboBox CmbUserType;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
+        private System.Windows.Forms.Button btnResertPassword;
     }
 }

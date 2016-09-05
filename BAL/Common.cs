@@ -8,6 +8,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
@@ -28,7 +29,7 @@ namespace BAL
         public const int MatchThreshold = 14000;
         public const int Timer = 0;
         public enum LoginStatus { Correct, NameANDPasswordValidDateNOValid, EveryThingWrong }
-        public enum UserRoles { Admin, Users, SuperAdmin };
+        public enum UserRoles { Admin, Users, SuperAdmin,SuperUsers };
         public const int DataInsertSuccessfully = 0, IsValidateFinger = 0, Zero = 0, IsSameFinger = 0;
         /// <summary>
         /// Developer Joginder Singh
@@ -38,6 +39,24 @@ namespace BAL
         /// <param name="encodedServername"></param>
         /// <returns></returns>
         /// 
+
+
+
+        public static string GetMACAddress()
+        {
+            NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+            String sMacAddress = string.Empty;
+            foreach (NetworkInterface adapter in nics)
+            {
+                if (sMacAddress == String.Empty)// only return MAC Address from first card  
+                {
+                    IPInterfaceProperties properties = adapter.GetIPProperties();
+                    sMacAddress = adapter.GetPhysicalAddress().ToString();
+                }
+            } return sMacAddress;
+        }
+
+
         public static void CloseMantraConnection()
         {
             try
@@ -54,8 +73,6 @@ namespace BAL
                 GC.Collect();
             }
         }
-      
-      
         /// <summary>
         /// Create a bitmap from raw data in row/column format.
         /// </summary>

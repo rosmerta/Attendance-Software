@@ -23,19 +23,21 @@ namespace Attendance_Master
         {
             InitializeComponent();
             Timerview.Enabled = true;
-            Timerview.Interval = 1000;
+            Timerview.Interval = 60000;
+           
         }
         private void PunchMaster_Load(object sender, EventArgs e)
         {
             lblDate.Text = DateTime.Now.ToString("dd-MM-yyyy");
-            digitalDisplayControl1.DigitText = DateTime.Now.ToString("HH:mm:ss");
+            digitalDisplayControl1.DigitText = DateTime.Now.ToString("HH:mm");
             BindImage(FirstFinger);
+            this.ControlBox = false;
         }
         private void BindImage(PictureBox picturebox)
         {
             lblStatus.Text = "Please Wait";
             MantraFingerScanner ObjFingerScanner = new MantraFingerScanner();
-                ObjFingerScanner.MantraConnection(ref lblStatus, Common.Quentity, ref picturebox, true, PicEmployee, lblEmployeeName, lblEmployeeId);
+            ObjFingerScanner.MantraConnection(ref lblStatus, true, ref picturebox, lblEmployeeName, lblEmployeeId);
             lblStatus.Text = "Put your finger on Finger Scanner";
         }
         /// <summary>
@@ -44,7 +46,7 @@ namespace Attendance_Master
         /// <returns>Returns true if successful; false if unsuccessful</returns>
         private void timer1_Tick(object sender, EventArgs e)
         {
-            digitalDisplayControl1.DigitText = DateTime.Now.ToString("HH:mm:ss");
+            digitalDisplayControl1.DigitText = DateTime.Now.ToString("HH:mm");
             lblDate.Text = DateTime.Now.ToString("dd-MM-yyyy");
         }
         private void BtnClose_Click(object sender, EventArgs e)

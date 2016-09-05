@@ -21,5 +21,10 @@ namespace Attendance_Master
             ObjGetRecords.IsMdiContainer = true;
             ObjGetRecords.Show();
         }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

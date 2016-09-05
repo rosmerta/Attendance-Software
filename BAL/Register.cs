@@ -19,13 +19,11 @@ namespace BAL
         /// <param name="address"></param>
         /// <param name="fkOfficeId"></param>
         /// <param name="createdBy"></param>
-        /// <param name="image"></param>
         /// <param name="thumbImpression"></param>
         /// <param name="thumbImpression1"></param>
         /// <param name="thumbImpression2"></param>
         /// 
-        /// <returns>Return 0 or 1.....if return 1 or 2 that means save the data in database..</returns>
-        public int InsertDataForRegisterUser(string employeeID, string name, string address, string fkOfficeId, int createdBy, byte [] image, byte [] thumbImpression, byte [] thumbImpression1, byte  [] thumbImpression2)
+        public string InsertDataForRegisterUser(string employeeID, string name, string address, string fkOfficeId, int createdBy, byte [] thumbImpression, byte [] thumbImpression1, byte  [] thumbImpression2)
         {
             try
             {
@@ -38,11 +36,10 @@ namespace BAL
                 cmd.Parameters.Add("@address", SqlDbType.VarChar).Value= address;
                 cmd.Parameters.Add("@fkOfficeId", SqlDbType.VarChar).Value =fkOfficeId;
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.VarChar).Value= createdBy;
-                cmd.Parameters.Add("@EmployeeImage", SqlDbType.Binary).Value = image;
                 cmd.Parameters.Add("@ThoumbImpression", SqlDbType.Binary).Value = thumbImpression;
                 cmd.Parameters.Add("@ThoumbImpression2", SqlDbType.Binary).Value = thumbImpression1;
                 cmd.Parameters.Add("@ThoumbImpression3", SqlDbType.Binary).Value = thumbImpression2;
-                return DMLSql.MYInstance.ExecuteNonquery(cmd);
+                return DMLSql.MYInstance.GetSingleRecord(cmd);
             }
             catch (Exception)
             {
@@ -96,5 +93,66 @@ namespace BAL
                 throw;
             }
         }
+        public string InsertOfficeList(string officeName,string officeLocation,int createdBy)
+        {
+            try
+            {
+                string Query = "InsertOfficeList";
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = Query;
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("@Createdby", SqlDbType.Int).Value = createdBy;
+                cmd.Parameters.Add("@OfficeName", SqlDbType.VarChar).Value = officeName;
+                cmd.Parameters.Add("@OfficeLocation", SqlDbType.VarChar).Value = officeLocation;
+                return DMLSql.MYInstance.GetSingleRecord(cmd);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public string InsertMacAddressApprov(string userName, string userEmailId,string mobileNO,string rtoLcoation,string macAddress)
+        {
+
+            try
+            {
+                string Query = "InsertMacAddressApprov";
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = Query;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@UserName", SqlDbType.VarChar).Value = userName;
+                cmd.Parameters.Add("@UserEmailId", SqlDbType.VarChar).Value = userEmailId;
+                cmd.Parameters.Add("@Mobileno", SqlDbType.VarChar).Value = mobileNO;
+                cmd.Parameters.Add("@RTOLocation", SqlDbType.VarChar).Value = rtoLcoation;
+                cmd.Parameters.Add("@MACaddress", SqlDbType.VarChar).Value = macAddress;
+
+                return DMLSql.MYInstance.GetSingleRecord(cmd);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public string GetApproveSystemStatus(string MacAddress)
+        {
+
+            try
+            {
+                string Query = "GetApproveSystemStatus";
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = Query;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@MACAddress", SqlDbType.VarChar).Value = MacAddress;                
+                return DMLSql.MYInstance.GetSingleRecord(cmd);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

@@ -7,8 +7,11 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
 namespace Attendance_Master.Properties {
     using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -20,11 +23,15 @@ namespace Attendance_Master.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -38,6 +45,7 @@ namespace Attendance_Master.Properties {
                 return resourceMan;
             }
         }
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -51,6 +59,7 @@ namespace Attendance_Master.Properties {
                 resourceCulture = value;
             }
         }
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
@@ -60,12 +69,33 @@ namespace Attendance_Master.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HR {
+            get {
+                object obj = ResourceManager.GetObject("HR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap IC386473 {
             get {
                 object obj = ResourceManager.GetObject("IC386473", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tux_Superusuario {
+            get {
+                object obj = ResourceManager.GetObject("Tux-Superusuario", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

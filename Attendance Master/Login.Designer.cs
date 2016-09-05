@@ -160,7 +160,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
